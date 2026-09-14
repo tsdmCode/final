@@ -1,4 +1,4 @@
-import style from "./searchresults.module.scss";
+import style from './searchresults.module.scss';
 // Trykker brugeren på ”Alle jobs” i navigationsmenuen tages de til søgeresultat siden,
 // uden nogle søgekriterier. Det vil sige at alle jobannoncer vises når brugeren ikke har
 // søgt på noget.
@@ -10,5 +10,9 @@ import style from "./searchresults.module.scss";
 // de skal logge ind før de kan gemme en jobannonce. Det er op til dig at designe denne
 // del
 export default function Searchresults() {
-  return (<div className={style.searchresultsStyle}><h1>Hej</h1></div>)
-};
+  return (
+    <div className={style.searchresultsStyle}>
+      <h1>Hej</h1>
+    </div>
+  );
+}
