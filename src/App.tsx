@@ -6,7 +6,7 @@ import CreatePosting from "./pages/CreatePosting/CreatePosting"
 import Login from "./pages/Login/Login"
 import Mypage from "./pages/Mypage/Mypage"
 import Searchresults from "./pages/Searchresults/Searchresults"
-
+import Register from "./pages/Register/Register"
 
 function App() {
 
@@ -17,8 +17,9 @@ function App() {
           <Route element={<Layout />} >
             <Route index element={<Frontpage />} />
             <Route path="news" element={<News />} />
-            <Route path="opretannounce" element={<CreatePosting />} />
+            <Route path="opretannonce" element={<CreatePosting />} />
             <Route path="login" element={<Login />} />
+            <Route path="register" element={<Register />} />
             <Route path="minside" element={<Mypage />} />
             <Route path="searchresults" element={<Searchresults />} /> 
           </Route>
