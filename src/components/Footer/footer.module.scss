@@ -1,3 +1,71 @@
-.footerStyle {
+@use '../../styles/variables' as *;
 
+.footerStyle {
+  margin-top: auto;
+  padding: 2.5rem 5rem;
+  display: flex;
+  justify-content: space-between;
+  background-color: $main;
+  font-family: $fontstack;
+
+  a,
+  p {
+    color: $white;
+    font-size: $smallText;
+  }
+
+  h2 {
+    font-weight: $bolder;
+    color: $fullWhite;
+    font-size: $annonceText;
+  }
+
+  section {
+    display: flex;
+    flex-direction: column;
+    width: 33%;
+  }
+
+  form {
+    width: 80%;
+    flex: 1;
+    display: flex;
+  }
+
+  .soMe {
+    display: flex;
+
+    img {
+      width: 2.25rem;
+    }
+  }
+
+  input {
+    border: none;
+  }
+
+  input[type='email'] {
+    flex: 1;
+  }
+
+  input[type='submit'] {
+    color: $white;
+    background-color: $accent;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+  input[type='email'],
+  input[type='submit'] {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .footerStyle {
+    flex-direction: column;
+
+    section {
+      width: 100%;
+    }
+  }
 }
