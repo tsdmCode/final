@@ -18,7 +18,7 @@ export default function Footer() {
     }
 
     try {
-      const res = await fetch(import.meta.env.VITE_URL + '/api/newsletters', {
+      const res = await fetch(import.meta.env.VITE_URL + '/api/newsletter', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
