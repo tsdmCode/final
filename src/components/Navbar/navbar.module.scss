@@ -4,7 +4,9 @@
   background-color: $main;
   color: $white;
   font-family: $altfontstack;
-
+  .burger {
+    display: none;
+  }
   img {
     width: 400px;
     margin-left: 2rem;
@@ -15,7 +17,7 @@
     background-color: $accent;
     display: flex;
     justify-content: space-between;
-    
+
     ul {
       display: flex;
       gap: 1rem;
@@ -31,7 +33,6 @@
     }
 
     .loginList {
-      
       li {
         padding-left: $fullPadding;
         cursor: pointer;
@@ -42,6 +43,19 @@
     }
   }
 
+  @media (max-width: 540px) {
+    img {
+      width: 20%;
+    }
+
+    nav {
+      display: none;
+    }
+
+    .burger {
+      display: block;
+    }
+  }
 }
 
 .active {
