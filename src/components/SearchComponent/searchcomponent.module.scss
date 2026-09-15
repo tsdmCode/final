@@ -1,0 +1,67 @@
+@use '../../styles/variables' as *;
+
+.searchcomponentStyle {
+  background-color: $altwhite;
+  padding: 1rem 4rem;
+  display: flex;
+  flex-direction: column;
+  
+  h2 {
+    font-size: $pageHeader;
+    font-weight: $regularWeight;
+  }
+
+  form {
+    display: flex;
+
+    input {
+        padding: 1rem;
+        font-size: $headerText;
+    }
+
+     input[type='text'] {
+      width: 100%;
+      flex: 1;
+      padding-left: 2rem;
+      border-top-left-radius: 14px;
+      border-bottom-left-radius: 14px;
+      border-right: none;
+    }
+
+
+    input[type='submit'] {
+      background-color: $main;
+      border-top-right-radius: 14px;
+      border-bottom-right-radius: 14px;
+      color: $fullWhite;
+      width: 10%;
+      border-left: none;
+    }
+  }
+
+  .filters {
+    margin: $mediumPadding;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  select,
+  option {
+    font-family: $fontstack;
+  }
+
+  select {
+    border-radius: 14px;
+    background-color: $fullWhite;
+    border: 1px solid #00000033;
+    padding: $fullPadding;
+    font-size: $annonceText;
+  }
+
+  button {
+    background-color: transparent;
+    outline: none;
+    border: none;
+  }
+}

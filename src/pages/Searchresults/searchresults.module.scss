@@ -1,3 +1,5 @@
-.searchresultsStyle {
+@use "../../styles/variables" as *;
 
+.searchresultsStyle {
+    background-color: $fullWhite;
 }

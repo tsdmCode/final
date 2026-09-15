@@ -2,6 +2,8 @@ import Testimonials from '../../components/Testimonials/Testimonials';
 import NewsSection from '../../components/NewsSection/NewsSection';
 import style from './frontpage.module.scss';
 import Categories from '../../components/Categories/Categories';
+import HiddenHeader from '../../components/HiddenHeader/HiddenHeader';
+import SearchComponent from '../../components/SearchComponent/SearchComponent';
 // Søg og filtrering:
 // Forsiden indeholder søgefeltet i toppen. Her skal brugeren kunne søge både på
 // fritekst (indholdsteksten) og overskrifter til jobannoncer. Under søgeren findes
@@ -29,7 +31,8 @@ import Categories from '../../components/Categories/Categories';
 export default function Frontpage() {
   return (
     <div className={style.frontpageStyle}>
-      <h1>Hej</h1>
+      <HiddenHeader topic='Gratissimo' />
+      <SearchComponent />
       <Categories />
       <NewsSection />
       <Testimonials />
