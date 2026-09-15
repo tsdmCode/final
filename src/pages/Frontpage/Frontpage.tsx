@@ -1,6 +1,7 @@
 import Testimonials from '../../components/Testimonials/Testimonials';
 import NewsSection from '../../components/NewsSection/NewsSection';
 import style from './frontpage.module.scss';
+import Categories from '../../components/Categories/Categories';
 // Søg og filtrering:
 // Forsiden indeholder søgefeltet i toppen. Her skal brugeren kunne søge både på
 // fritekst (indholdsteksten) og overskrifter til jobannoncer. Under søgeren findes
@@ -25,14 +26,11 @@ import style from './frontpage.module.scss';
 // Udvalgte nyheder:
 // Viser tre tilfældigt udvalgte nyheder. Når man klikker på én af nyhederne, skal man
 // tages til nyhedssiden hvor hele nyheden vises.
-// Bruger anmeldelser:
-// Der skal i bunden af siden vises en slider der viser de forskellige udtalelser fra
-// brugere. Slideren skal være indstillet så den automatisk skifter til den næste
-// udtalelse efter 5 sekunder. Når den når enden looper den og starter forfra.
 export default function Frontpage() {
   return (
     <div className={style.frontpageStyle}>
       <h1>Hej</h1>
+      <Categories />
       <NewsSection />
       <Testimonials />
     </div>
