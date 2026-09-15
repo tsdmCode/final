@@ -1,6 +1,6 @@
 export interface JobListing {
   id: number;
-  createdAt: Date;
+  createdAt: string;
   description: string;
   title: string;
   address: string;
@@ -36,7 +36,7 @@ export interface Fav {
 
 export interface JobListing {
   id: number;
-  createdAt: Date;
+  createdAt: string;
   description: string;
   title: string;
   address: string;
@@ -76,7 +76,7 @@ export interface CategoryByID {
 
 export interface JobListing {
   id: number;
-  createdAt: Date;
+  createdAt: string;
   description: string;
   title: string;
   address: string;
