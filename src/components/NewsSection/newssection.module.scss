@@ -3,17 +3,18 @@
   font-family: $fontstack;
   background-color: $altwhite;
   padding: 2rem;
-  article {
-    display: flex;
+  display: grid;
 
+  article {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: rem 1rem;
     figure {
-        width: 33%;
+        width: 80%;
     }
 
     @media (max-width: 540px) {
-        display: flex;
-        flex-direction: column;
-
+        grid-template-columns: repeat(1, 1fr);
         figure {
             width: 80%;
         }
