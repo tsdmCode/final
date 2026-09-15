@@ -4,6 +4,10 @@ import style from './frontpage.module.scss';
 import Categories from '../../components/Categories/Categories';
 import HiddenHeader from '../../components/HiddenHeader/HiddenHeader';
 import SearchComponent from '../../components/SearchComponent/SearchComponent';
+import { useMemo } from 'react';
+import { useFetch } from '../../hooks/useFetch';
+import type { Article } from '../../types/types';
+import { shuffleArray } from '../../lib/shuffleArray';
 // Søg og filtrering:
 // Forsiden indeholder søgefeltet i toppen. Her skal brugeren kunne søge både på
 // fritekst (indholdsteksten) og overskrifter til jobannoncer. Under søgeren findes
@@ -28,13 +32,20 @@ import SearchComponent from '../../components/SearchComponent/SearchComponent';
 // Udvalgte nyheder:
 // Viser tre tilfældigt udvalgte nyheder. Når man klikker på én af nyhederne, skal man
 // tages til nyhedssiden hvor hele nyheden vises.
+
 export default function Frontpage() {
+  const { data } = useFetch<Article[]>(import.meta.env.VITE_URL + '/api/articles');
+
+  const news = useMemo(() => {
+    if (!data) return [];
+    return shuffleArray(data).slice(0, 3);
+  }, [data]);
   return (
     <div className={style.frontpageStyle}>
-      <HiddenHeader topic='Gratissimo' />
+      <HiddenHeader topic="Gratissimo" />
       <SearchComponent />
       <Categories />
-      <NewsSection />
+      <NewsSection header={'Udvalgte nyheder'} news={news} />
       <Testimonials />
     </div>
   );
