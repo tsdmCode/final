@@ -1,0 +1,29 @@
+@use '../../styles/variables' as *;
+.newssectionStyle {
+  font-family: $fontstack;
+  height: 600px;
+  background-color: $altwhite;
+  article {
+    display: flex;
+
+    figure {
+        width: 33%;
+    }
+
+    @media (max-width: 540px) {
+        display: flex;
+        flex-direction: column;
+
+        figure {
+            width: 80%;
+        }
+    }
+  }
+  h2 {
+    font-size: $headerText;
+  }
+
+  @media (max-width: 540px) {
+    height: fit-content;
+  }
+}
