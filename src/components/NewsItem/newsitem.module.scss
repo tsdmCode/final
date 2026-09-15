@@ -1,0 +1,30 @@
+@use '../../styles/variables' as *;
+
+.newsitemStyle {
+  height: 340px;
+  width: 356px;
+  border: 1px solid gray;
+  background-color: $fullWhite;
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  figcaption {
+    padding: 0.5rem 1rem;
+  }
+
+  h3 {
+    font-size: $regular;
+    font-weight: $regularWeight;
+  }
+
+  img {
+    height: 80%;
+    object-fit: cover;
+  }
+  .date {
+    color: $accent;
+    font-size: $dateText;
+  }
+}

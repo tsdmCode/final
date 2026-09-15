@@ -1,4 +1,5 @@
 import Testimonials from '../../components/Testimonials/Testimonials';
+import NewsSection from '../../components/NewsSection/NewsSection';
 import style from './frontpage.module.scss';
 // Søg og filtrering:
 // Forsiden indeholder søgefeltet i toppen. Her skal brugeren kunne søge både på
@@ -32,6 +33,7 @@ export default function Frontpage() {
   return (
     <div className={style.frontpageStyle}>
       <h1>Hej</h1>
+      <NewsSection />
       <Testimonials />
     </div>
   );
