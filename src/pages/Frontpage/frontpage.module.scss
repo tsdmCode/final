@@ -1,3 +1,5 @@
-.frontpageStyle {
+@use "../../styles/variables" as *;
 
+.frontpageStyle {
+    background-color: $fullWhite;
 }

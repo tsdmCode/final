@@ -1,0 +1,44 @@
+@use '../../styles/variables' as *;
+.testimonialsStyle {
+  background-color: $white;
+  font-family: $fontstack;
+
+  article {
+    text-align: center;
+    margin: 1rem 25%;
+    h2 {
+      color: $accent;
+      font-size: $doubleSize;
+    }
+
+    p {
+      font-weight: $thin;
+    }
+
+    p:last-of-type {
+      font-weight: 200;
+    }
+
+    @media (max-width: 540px) {
+      margin: 1rem 10%;
+    }
+  }
+
+  .dots {
+    display: flex;
+    justify-content: center;
+    gap: $mediumPadding;
+    margin: 1rem 25%;
+    .dot {
+      background-color: $white;
+      border-radius: 300px;
+      border: 1px solid black;
+      width: 1rem;
+      height: 1rem;
+
+      &.active {
+        background-color: $accent;
+      }
+    }
+  }
+}

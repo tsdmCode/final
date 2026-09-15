@@ -1,4 +1,5 @@
-import style from "./frontpage.module.scss";
+import Testimonials from '../../components/Testimonials/Testimonials';
+import style from './frontpage.module.scss';
 // Søg og filtrering:
 // Forsiden indeholder søgefeltet i toppen. Her skal brugeren kunne søge både på
 // fritekst (indholdsteksten) og overskrifter til jobannoncer. Under søgeren findes
@@ -28,7 +29,10 @@ import style from "./frontpage.module.scss";
 // brugere. Slideren skal være indstillet så den automatisk skifter til den næste
 // udtalelse efter 5 sekunder. Når den når enden looper den og starter forfra.
 export default function Frontpage() {
-  return (<div className={style.frontpageStyle}>
-    <h1>Hej</h1>
-  </div>)
-};
+  return (
+    <div className={style.frontpageStyle}>
+      <h1>Hej</h1>
+      <Testimonials />
+    </div>
+  );
+}
