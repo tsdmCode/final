@@ -58,41 +58,51 @@ export default function SearchComponent() {
     navigate(`/searchresults?${params.toString()}`);
   }
 
+  function resetFilters() {
+    setQuery('');
+    setCategoryId('');
+    setWorkTypeId('');
+    setRegionId('');
+    setPeriod('');
+  }
+
   return (
-    <div className={style.searchcomponentStyle}>
+    <section className={style.searchcomponentStyle}>
       <h2>Søg frivilligt arbejde</h2>
       <form onSubmit={handleSubmit}>
         <input type="text" onChange={(e) => setQuery(e.target.value)} />
         <input type="submit" value={'Søg'} />
-        <select onChange={(e) => setCategoryId(e.target.value)}>
-          <option value="">Kategorier</option>
-          {categoryData?.map((category) => (
-            <option value={category.id}>{category.name}</option>
-          ))}
-        </select>
-        <select onChange={(e) => setRegionId(e.target.value)}>
-          <option value="">
-            Region
-          </option>
-          {regionData?.map((region) => (
-            <option key={region.id} value={region.id}>
-              {region.name}
-            </option>
-          ))}
-        </select>
-        <select onChange={(e) => setWorkTypeId(e.target.value)}>
-          <option value="">Arbejdstid</option>
-          {workTypeData?.map((workType) => (
-            <option value={workType.id}>{workType.type}</option>
-          ))}
-        </select>
-        <select onChange={(e) => setPeriod(e.target.value)}>
-          <option value="">Periode</option>
-          <option value="Uge">Uge</option>
-          <option value="Måned">Måned</option>
-          <option value="År">År</option>
-        </select>
+
       </form>
-    </div>
+        <div className={style.filters}>
+          <select onChange={(e) => setCategoryId(e.target.value)}>
+            <option value="">Kategorier</option>
+            {categoryData?.map((category) => (
+              <option value={category.id}>{category.name}</option>
+            ))}
+          </select>
+          <select onChange={(e) => setRegionId(e.target.value)}>
+            <option value="">Region</option>
+            {regionData?.map((region) => (
+              <option key={region.id} value={region.id}>
+                {region.name}
+              </option>
+            ))}
+          </select>
+          <select onChange={(e) => setWorkTypeId(e.target.value)}>
+            <option value="">Arbejdstid</option>
+            {workTypeData?.map((workType) => (
+              <option value={workType.id}>{workType.type}</option>
+            ))}
+          </select>
+          <select onChange={(e) => setPeriod(e.target.value)}>
+            <option value="">Periode</option>
+            <option value="Uge">Uge</option>
+            <option value="Måned">Måned</option>
+            <option value="År">År</option>
+          </select>
+          <button onClick={resetFilters}>Nulstil</button>
+        </div>
+    </section>
   );
 }

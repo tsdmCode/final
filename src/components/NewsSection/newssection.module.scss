@@ -1,8 +1,8 @@
 @use '../../styles/variables' as *;
 .newssectionStyle {
   font-family: $fontstack;
-  height: 600px;
   background-color: $altwhite;
+  padding: 2rem;
   article {
     display: flex;
 

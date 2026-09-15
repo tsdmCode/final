@@ -3,6 +3,7 @@ import SearchComponent from '../../components/SearchComponent/SearchComponent';
 import { useFetch } from '../../hooks/useFetch';
 import type { CategoryByID, JobListing } from '../../types/types';
 import style from './searchresults.module.scss';
+import HiddenHeader from '../../components/HiddenHeader/HiddenHeader';
 // Trykker brugeren på ”Alle jobs” i navigationsmenuen tages de til søgeresultat siden,
 // uden nogle søgekriterier. Det vil sige at alle jobannoncer vises når brugeren ikke har
 // søgt på noget.
@@ -18,13 +19,7 @@ function checkTimeDiff(timeStamp: string, period: number): boolean {
   const pastDate: Date = new Date(timeStamp);
   const currentDate: Date = new Date();
   const diffMs: number = currentDate.getTime() - pastDate.getTime();
-   console.log({
-    timeStamp,
-    pastDate: pastDate.toString(),
-    diffMs,
-    period,
-    result: diffMs <= period,
-  });
+  
   return diffMs <= period;
 }
 
@@ -34,6 +29,7 @@ export default function Searchresults() {
   const categoryId = searchParams.get('category');
   const regionId = searchParams.get('region');
   const period = searchParams.get('period');
+  const workTypeId = searchParams.get("worktype")
   const baseUrl = import.meta.env.VITE_URL + '/api/job-listings';
   const url = categoryId ? `${import.meta.env.VITE_URL}/api/job-categories/${categoryId}` : baseUrl;
   const { data } = useFetch<JobListing[] | CategoryByID>(url);
@@ -45,9 +41,9 @@ export default function Searchresults() {
   }
 
   if (period) {
-    const week = 60 * 1000 * 24 * 7;
-    const month = 60 * 1000 * 24 * 30;
-    const year = month * 12;
+    const week = 1000 * 60 * 60 * 24 * 7;
+    const month = 1000 * 60 * 60 * 24 * 30;
+    const year = 1000 * 60 * 60 * 24 * 365;
     let filterPeriod: number;
 
     switch (period) {
@@ -63,18 +59,22 @@ export default function Searchresults() {
       default:
         break;
     }
-    
-    listings = listings.filter((listing) => checkTimeDiff(listing.createdAt, filterPeriod))
+
+    listings = listings.filter((listing) => checkTimeDiff(listing.createdAt, filterPeriod));
   }
 
   if (regionId) {
     listings = listings.filter((listing) => listing.regionId === Number(regionId));
   }
 
+  if (workTypeId) {
+    listings = listings.filter((listing) => listing.workTypeId === Number(workTypeId));    
+  }
+
   return (
     <div className={style.searchresultsStyle}>
       <SearchComponent />
-
+      <HiddenHeader topic='Hej' />
       {listings?.map((listing) => (
         <h2>
           {listing.title} {listing.jobCategory.name}
