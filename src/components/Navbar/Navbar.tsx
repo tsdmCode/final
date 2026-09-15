@@ -3,6 +3,7 @@ import style from './navbar.module.scss';
 import { NavLink } from 'react-router';
 import { GiHamburgerMenu } from "react-icons/gi";
 import NavMenu from '../NavMenu/NavMenu';
+import logo from '../../assets/logo/logo-white.png';
 export default function Navbar() {
   const [userData] = useState(true); //placeholder så jeg kan teste min conditional logik
   const [navVis, setNavVis] = useState(false);
@@ -11,7 +12,7 @@ export default function Navbar() {
   }
   return (
     <header className={style.navbarStyle}>
-      <img src="src/assets/logo/logo-white.png" alt="" />
+      <img src={logo} alt="" />
       <nav>
         <ul>
           <li>
