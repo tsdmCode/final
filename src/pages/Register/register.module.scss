@@ -1,3 +1,47 @@
-.registerStyle {
+@use '../../styles/variables' as *;
 
+.registerStyle {
+  width: 50%;
+  margin: 1rem 25%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  h2 {
+    font-family: $fontstack;
+    text-align: center;
+    font-weight: $regular;
+  }
+  label {
+    font-family: $altfontstack;
+  }
+  input {
+    display: block;
+    width: 100%;
+    border-radius: 8px;
+    padding: 1rem;
+  }
+  form {
+    margin: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  input[type="submit"] {
+    background-color: $main;
+    color: $fullWhite;
+    border-radius: 24px;
+    font-family: $fontstack;
+  }
+
+  a {
+    margin-top: 0.5rem;
+    font-size: $dateText;
+    color: $main;
+    font-weight: $thin;
+    align-self: flex-start;
+  }
 }
