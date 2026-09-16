@@ -5,6 +5,8 @@ import style from './login.module.scss';
 // Begge skal sendes til API´et på deres respektive endpoints og det skal være et
 // fungerende log ind. Det vil sige at brugerens data og auth tokens gemmes i cookies, så
 // brugeren stadig er logget ind når man genindlæser siden.
+
+//delete kandidat
 export default function Login() {
   return (
     <div className={style.loginStyle}>
