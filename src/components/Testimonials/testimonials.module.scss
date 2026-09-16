@@ -32,7 +32,7 @@
     .dot {
       background-color: $white;
       border-radius: 300px;
-      border: 1px solid black;
+      @include borderValues(1px, #00000066);
       width: 1rem;
       height: 1rem;
 

@@ -36,3 +36,9 @@ $mediumPadding: 0.5rem; //8px
 $fullPadding: 1rem; //16px, igen duh
 
 // #endregion
+
+//#region mixins
+
+@mixin borderValues($thickness, $color) {
+    border: $thickness solid $color;
+}

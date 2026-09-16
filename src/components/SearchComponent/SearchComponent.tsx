@@ -75,6 +75,7 @@ export default function SearchComponent() {
 
       </form>
         <div className={style.filters}>
+          <p>Filtrer</p>
           <select onChange={(e) => setCategoryId(e.target.value)}>
             <option value="">Kategorier</option>
             {categoryData?.map((category) => (

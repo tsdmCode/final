@@ -4,6 +4,7 @@ import { useFetch } from '../../hooks/useFetch';
 import type { CategoryByID, JobListing } from '../../types/types';
 import style from './searchresults.module.scss';
 import HiddenHeader from '../../components/HiddenHeader/HiddenHeader';
+import AnnonceComponent from '../../components/AnnonceComponent/AnnonceComponent';
 // Trykker brugeren på ”Alle jobs” i navigationsmenuen tages de til søgeresultat siden,
 // uden nogle søgekriterier. Det vil sige at alle jobannoncer vises når brugeren ikke har
 // søgt på noget.
@@ -75,11 +76,11 @@ export default function Searchresults() {
     <div className={style.searchresultsStyle}>
       <SearchComponent />
       <HiddenHeader topic='Hej' />
-      {listings?.map((listing) => (
-        <h2>
-          {listing.title} {listing.jobCategory.name}
-        </h2>
-      ))}
+      <article>
+        {listings?.map((listing) => (
+          <AnnonceComponent key={listing.id} listing={listing}/>
+        ))}
+      </article>
     </div>
   );
 }
