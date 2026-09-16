@@ -156,3 +156,13 @@ export interface User {
   zipcode: number;
   refreshToken: string;
 }
+
+export interface UserData {
+  accessToken: string;
+  refreshToken: string;
+  user: {
+    id: number;
+    firstname: string;
+    lastname: string;
+  };
+}
