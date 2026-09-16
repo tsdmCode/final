@@ -1,11 +1,13 @@
+@use "../../styles/variables" as *;
+
 .categoriesStyle {
   margin: 2rem;
+  background-color: $white;
   .categoryGrid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     row-gap: 2rem;
     column-gap: 5rem;
-
     @media (max-width: 938px) {
       grid-template-columns: repeat(2, 1fr);
     }
