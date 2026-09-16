@@ -20,14 +20,14 @@ export default function Register() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (userData) navigate('/home');
+    if (userData) navigate('/minside');
   }, [userData, navigate]);
 
   async function handleRegister() {
     setMessageError(null);
     const nameRegex = /^[A-za-z]+$/;
     const emailRegex = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
-    const phoneRegex = /^(\+45)*[0-9]{8}$/;
+    const phoneRegex = /^(\+45)?[0-9]{8}$/;
 
     if (!nameRegex.test(firstName) || !nameRegex.test(lastName)) {
       setMessageError('Mærkeligt navn, ingen specielle karakterer tak!');
@@ -83,7 +83,7 @@ export default function Register() {
   async function handleLogin(e: React.SubmitEvent) {
     e.preventDefault();
 
-    await fetch('http://localhost:4000/api/auth/login', {
+    await fetch('http://localhost:4000/api/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

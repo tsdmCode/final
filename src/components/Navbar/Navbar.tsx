@@ -1,12 +1,15 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import style from './navbar.module.scss';
 import { NavLink } from 'react-router';
 import { GiHamburgerMenu } from "react-icons/gi";
 import NavMenu from '../NavMenu/NavMenu';
 import logo from '../../assets/logo/logo-white.png';
+import { AuthContext } from '../../context/context/AuthContext';
+
 export default function Navbar() {
-  const [userData] = useState(true); //placeholder så jeg kan teste min conditional logik
+  const {userData} = useContext(AuthContext)
   const [navVis, setNavVis] = useState(false);
+
   function logOut() {
     //blabla placeholder
   }
@@ -45,11 +48,11 @@ export default function Navbar() {
           ) : (
             <>
               <li>
-                <NavLink to={'/register'}>Opret Bruger</NavLink>
+                <NavLink to={'/register?mode=register'}>Opret Bruger</NavLink>
               </li>
               {/* <hr /> */}
               <li>
-                <NavLink to={'/login'}>Login</NavLink>
+                <NavLink to={'/register?mode=login'}>Login</NavLink>
               </li>
             </>
           )}
