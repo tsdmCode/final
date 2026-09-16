@@ -178,7 +178,11 @@ export default function Register() {
         )}
         {messageError && <p>{messageError}</p>}
       </>
-      {mode === "register" ? <a onClick={() => navigate('/register?mode=login')}>Log ind</a> : <a onClick={() => navigate('/register?mode=register')}>Ny bruger? Opret dig her</a>}
+      {mode === 'register' ? (
+        <a onClick={() => navigate('/register?mode=login')}>Log ind</a>
+      ) : (
+        <a onClick={() => navigate('/register?mode=register')}>Ny bruger? Opret dig her</a>
+      )}
     </div>
   );
 }

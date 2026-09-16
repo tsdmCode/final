@@ -10,6 +10,12 @@
     margin-top: 0;
     margin-left: -50vw;
     margin-right: -50vw;
+
+    h2 {
+      font-size: $biggestText;
+      font-weight: $regularWeight;
+      font-family: $altfontstack;
+    }
   }
 
   width: 50%;
@@ -19,11 +25,14 @@
   justify-content: center;
   align-items: center;
   align-content: center;
+
   h2 {
-    font-family: $fontstack;
+    font-family: $altfontstack;
     text-align: center;
-    font-weight: $regular;
+    font-weight: $regularWeight;
+    font-size: $pageHeader;
   }
+
   label {
     font-family: $altfontstack;
   }
