@@ -11,6 +11,7 @@ export default function Register() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [address, setAddress] = useState('');
+  const [city, setCity] = useState('');
   const [zipcode, setZipcode] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
   const [messageError, setMessageError] = useState<string | null>('');
@@ -24,16 +25,17 @@ export default function Register() {
     setMessageError(null);
     const nameRegex = /^[A-za-z]+$/;
     const emailRegex = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
+    const phoneRegex = /^(\+45)*[0-9]{8}$/
 
-    if (!nameRegex.test(firstName)) {
+    if (!nameRegex.test(firstName) || !nameRegex.test(lastName)) {
       setMessageError('Mærkeligt navn, ingen specielle karakterer tak!');
       return;
     }
 
-    if (!nameRegex.test(lastName)) {
-      setMessageError('Mærkeligt navn, ingen specielle karakterer tak!');
+    if (!phoneRegex.test(phone)) {
+      setMessageError("Ugyldigt tlf nummer")
       return;
-    }
+    } 
 
     if (!emailRegex.test(email)) {
       setMessageError('Ugyldig email');
@@ -50,22 +52,27 @@ export default function Register() {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ firstname: firstName, lastname: lastName, email, password, phone, address }),
+      body: JSON.stringify({ firstname: firstName, lastname: lastName, email, password, phone, address, city, zipcode }),
     })
       .then((res) => {
         if (!res.ok) {
           throw new Error(`HTTP error! status: ${res.status}`);
         }
-        return res.text();
+
+        navigate('/login');        
+        // return res.text();
       })
       .catch((error) => {
         console.error('Error creating user: ', error);
+        setMessageError(error)
+        return;
       });
+
   }
 
   return (
     <div className={style.registerStyle}>
-      <h2>Register</h2>
+      <h2>Opret ny profil</h2>
       <>
         <form action={handleRegister}>
           <span>
@@ -80,7 +87,7 @@ export default function Register() {
             <label htmlFor="gentag password">Gentag password</label>
             <input
               type="password"
-              value={password}
+              value={repeatPassword}
               onChange={(e) => setRepeatPassword(e.target.value)}
               name="gentag password"
             />
@@ -105,12 +112,16 @@ export default function Register() {
             <label htmlFor="postnummer">Postnummer</label>
             <input type="number" value={zipcode} onChange={(e) => setZipcode(e.target.value)} name="telefon" />
           </span>
+          <span>
+            <label htmlFor="by">By</label>
+            <input type="text" value={city} onChange={(e) => setCity(e.target.value)} name="by" />
+          </span>
 
           <input type="submit" value={'REGISTRÉR'} />
         </form>
         {messageError && <p>{messageError}</p>}
       </>
-      <a href='/login'>Log ind</a>
+      <a href="/login">Log ind</a>
     </div>
   );
 }
