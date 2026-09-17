@@ -35,7 +35,13 @@ export default function CreatePosting() {
   const [regionId, setRegionId] = useState('1');
   const [messageError, setMessageError] = useState('');
 
-  function handleCreatePosting() {
+  async function handleCreatePosting() {
+    if (!userData) {
+      alert("Log lige ind først")
+    }
+
+    
+
     console.log('Monkey');
   }
 

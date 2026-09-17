@@ -10,9 +10,6 @@ export default function Navbar() {
   const {userData, logout} = useContext(AuthContext)
   const [navVis, setNavVis] = useState(false);
 
-  function logOut() {
-    //blabla placeholder
-  }
   return (
     <header className={style.navbarStyle}>
       <img src={logo} alt="" />
@@ -29,7 +26,7 @@ export default function Navbar() {
             </NavLink>
           </li>
           <li>
-            <NavLink className={({isActive}) => (isActive ? style.active : '')} to={'/news'}>
+            <NavLink className={({isActive}) => (isActive ? style.active : '')} to={'/news/1'}>
               Nyheder
             </NavLink>
           </li>

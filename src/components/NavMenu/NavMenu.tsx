@@ -28,14 +28,11 @@ export default function NavMenu({ setNavVis }: { setNavVis: (arg0: boolean) => v
               Nyheder
             </NavLink>
           </li>
-        </ul>
-        <ul className={style.loginList}>
           {userData ? (
             <>
               <li>
                 <NavLink to={'/minside'}>Min side</NavLink>
               </li>
-              {/* <hr /> */}
               <li onClick={logOut}>
                 <a>Logout</a>
               </li>
@@ -45,7 +42,6 @@ export default function NavMenu({ setNavVis }: { setNavVis: (arg0: boolean) => v
               <li>
                 <NavLink to={'/register'}>Opret Bruger</NavLink>
               </li>
-              {/* <hr /> */}
               <li>
                 <NavLink to={'/login'}>Login</NavLink>
               </li>

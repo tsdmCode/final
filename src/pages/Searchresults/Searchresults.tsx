@@ -36,7 +36,7 @@ export default function Searchresults() {
   const workTypeId = searchParams.get('worktype');
   const baseUrl = import.meta.env.VITE_URL + '/api/job-listings';
   const url = categoryId ? `${import.meta.env.VITE_URL}/api/job-categories/${categoryId}` : baseUrl;
-  const [favorites, setFavorites] = useState<number[]>([]);
+  const [favorites, setFavorites] = useState<Fav[]>([]);
   const { data } = useFetch<JobListing[] | CategoryByID>(url);
 
   useEffect(() => {
@@ -52,8 +52,10 @@ export default function Searchresults() {
         })
         .then((data: Fav[]) => {
           if (Array.isArray(data)) {
-            const favIds = data.map((fav) => fav.jobListingId);
-            setFavorites(favIds);
+            setFavorites(data);
+            console.log("array data:", data)
+          } else {
+            setFavorites([]);
           }
         })
         .catch((err) => {

@@ -1,13 +1,11 @@
-import { useContext, useState } from 'react';
-import type { JobListing } from '../../types/types';
+import { useContext, useState, useEffect } from 'react';
+import type { Fav, JobListing } from '../../types/types';
 import style from './annoncecomponent.module.scss';
 import favorite from '../../assets/icons/icons8-favorite-50.png';
 import favFilled from '../../assets/icons/icons8-favorite-filled-50.png';
 import { AuthContext } from '../../context/context/AuthContext';
-interface AnnonceComponentProps {
-  variant: 'FAV' | 'DELETE';
-}
 
+//todo register page og flyt det her VV OG lav noget refresh
 function timeFormatter(creationTime) {
   const date = new Date(creationTime);
   const day = date.getDate();
@@ -19,31 +17,54 @@ function timeFormatter(creationTime) {
   return formattedDate;
 }
 
-export default function AnnonceComponent({ favorites, listing }: { favorites: number[]; listing: JobListing }) {
-  const {userData} = useContext(AuthContext)
+export default function AnnonceComponent({ favorites, listing }: { favorites: Fav[]; listing: JobListing }) {
+  const [isLoading, setIsLoading] = useState(false);
+  const [localFav, setLocalFav] = useState(false);
+  const { userData } = useContext(AuthContext);
   const [isOpen, setIsOpen] = useState(false);
-  let isFav = favorites.includes(listing.id);
+  const isFav = favorites.some((fav) => fav.jobListingId === listing.id);
+  const favRecord = favorites.find((fav) => fav.jobListingId === listing.id);
 
-  if (isFav) {
-    console.log("hej")
-  }
-
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setLocalFav(favorites.some((fav) => fav.jobListingId === listing.id));
+  }, [favorites, listing.id]);
+  
   async function handleFavoriteClick() {
-    if (isFav) {
-      await fetch(import.meta.env.VITE_URL + `/api/favorites/${listing.id}`, {
-        method: "DELETE",
+    if (!userData) {
+      alert('Du skal lige være logget ind makker');
+      return;
+    }
+
+    setIsLoading(true);
+    try {
+      const method = localFav ? 'DELETE' : 'POST';
+      console.log(listing);
+      const url =
+        localFav && favRecord
+          ? `${import.meta.env.VITE_URL}/api/favorites/${favRecord.id}`
+          : `${import.meta.env.VITE_URL}/api/favorites`;
+      const body = method === 'POST' ? JSON.stringify({ jobListingId: listing.id }) : undefined;
+      console.log('Sender:', { method, url, body });
+      const res = await fetch(url, {
+        method,
         headers: {
-          "Authorization": `Bearer ${userData.accessToken}`
-        }
-      })
-    } else {
-      await fetch(import.meta.env.VITE_URL + `/api/favorites/${listing.id}`, {
-        method: "POST",
-        headers: {
-          "Authorization": `Bearer ${userData.accessToken}`
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${userData.accessToken}`,
         },
-        body: JSON.stringify({ jobListingId: listing.id})
-      })
+        body,
+        // body: method === 'POST' ? JSON.stringify({ jobListingId: listing.id }) : undefined,
+      });
+      if (!res.ok) {
+        throw new Error(`Kunne ikke ${isFav ? 'fjerne' : 'tilføje'} til favoritter`);
+      }
+      setLocalFav(!localFav);
+      alert(localFav ? 'Fjernet fra favoritter' : 'Gemt som favorit');
+    } catch (error) {
+      console.error('Kunne ikke opdatere favoritter:', error);
+      alert('Der skete en fejl');
+    } finally {
+      setIsLoading(false);
     }
   }
 
@@ -80,17 +101,13 @@ export default function AnnonceComponent({ favorites, listing }: { favorites: nu
           </>
         )}
         <div className={style.controls}>
-          {isFav ? (
-            <button>
-              <img src={favFilled}></img> Fjern
-            </button>
-          ) : (
-            <button>
-              <img src={favorite}></img> Gem
-            </button>
-          )}
+          <button onClick={handleFavoriteClick}>
+            <img src={localFav ? favFilled : favorite} alt="" /> {localFav ? 'Fjern' : 'Gem'}
+          </button>
 
-          <button onClick={() => setIsOpen((prev) => !prev)}>{isOpen ? 'Luk' : 'Åben'}</button>
+          <button disabled={isLoading} onClick={() => setIsOpen((prev) => !prev)}>
+            {isOpen ? 'Luk' : 'Åben'}
+          </button>
         </div>
       </article>
     </div>
