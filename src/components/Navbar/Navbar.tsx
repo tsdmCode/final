@@ -7,12 +7,9 @@ import logo from '../../assets/logo/logo-white.png';
 import { AuthContext } from '../../context/context/AuthContext';
 
 export default function Navbar() {
-  const {userData} = useContext(AuthContext)
+  const {userData, logout} = useContext(AuthContext)
   const [navVis, setNavVis] = useState(false);
 
-  function logOut() {
-    //blabla placeholder
-  }
   return (
     <header className={style.navbarStyle}>
       <img src={logo} alt="" />
@@ -29,7 +26,7 @@ export default function Navbar() {
             </NavLink>
           </li>
           <li>
-            <NavLink className={({isActive}) => (isActive ? style.active : '')} to={'/news'}>
+            <NavLink className={({isActive}) => (isActive ? style.active : '')} to={'/news/1'}>
               Nyheder
             </NavLink>
           </li>
@@ -41,7 +38,7 @@ export default function Navbar() {
                 <NavLink to={'/minside'}>Min side</NavLink>
               </li>
               {/* <hr /> */}
-              <li onClick={logOut}>
+              <li onClick={logout}>
                 <a>Logout</a>
               </li>
             </>

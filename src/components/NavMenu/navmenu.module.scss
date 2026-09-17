@@ -19,7 +19,6 @@
   height: 100vh;
   transform: translateY(-100%);
   animation: slideIn 0.5s ease-out forwards;
-  background-color: #ffffff;
   top: 0;
   left: 0;
   right: 0;
@@ -33,6 +32,7 @@
   ul {
     display: flex;
     flex-direction: column;
+    margin: 0;
   }
  }
 }

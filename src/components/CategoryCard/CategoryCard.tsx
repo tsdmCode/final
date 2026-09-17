@@ -6,7 +6,7 @@ export default function CategoryCard({ category }: { category: JobCategoryWithCo
   const navigate = useNavigate()
   
   return (
-    <div onClick={() => navigate(`/search?category=${category.id}`)} className={style.categorycardStyle}>
+    <div onClick={() => navigate(`/searchresults?category=${category.id}`)} className={style.categorycardStyle}>
       <p>{category.name}</p>
       <p>{category.jobCount}</p>
     </div>
