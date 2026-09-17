@@ -2,6 +2,7 @@ import style from './register.module.scss';
 import { useState, useEffect, useContext } from 'react';
 import { useNavigate, useSearchParams } from 'react-router';
 import { AuthContext } from '../../context/context/AuthContext';
+import UserBanner from '../../components/UserBanner/UserBanner';
 
 export default function Register() {
   const [searchParams] = useSearchParams();
@@ -107,13 +108,14 @@ export default function Register() {
 
   return (
     <div className={style.registerStyle}>
-      <article>
+      <UserBanner />
+      {/* <article>
         <h2>Log ind eller opret dig som bruger</h2>
         <p>
           Når du opretter en profil på Gratissimo får du adgang til at oprette, slette og redigere i job annoncer. Som
           privatperson får du mulighed for at gemme de jobs du kunne være interesseret i.{' '}
         </p>
-      </article>
+      </article> */}
       <h2>{mode === 'register' ? 'Opret ny Profil' : 'Log ind'}</h2>
       <>
         {mode === 'register' ? (
