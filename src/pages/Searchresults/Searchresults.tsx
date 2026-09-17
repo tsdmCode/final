@@ -1,10 +1,12 @@
 import { useSearchParams } from 'react-router';
 import SearchComponent from '../../components/SearchComponent/SearchComponent';
 import { useFetch } from '../../hooks/useFetch';
-import type { CategoryByID, JobListing } from '../../types/types';
+import type { Fav, CategoryByID, JobListing, UserData } from '../../types/types';
 import style from './searchresults.module.scss';
 import HiddenHeader from '../../components/HiddenHeader/HiddenHeader';
 import AnnonceComponent from '../../components/AnnonceComponent/AnnonceComponent';
+import { AuthContext } from '../../context/context/AuthContext';
+import { useContext, useEffect, useState } from 'react';
 // Trykker brugeren på ”Alle jobs” i navigationsmenuen tages de til søgeresultat siden,
 // uden nogle søgekriterier. Det vil sige at alle jobannoncer vises når brugeren ikke har
 // søgt på noget.
@@ -20,20 +22,46 @@ function checkTimeDiff(timeStamp: string, period: number): boolean {
   const pastDate: Date = new Date(timeStamp);
   const currentDate: Date = new Date();
   const diffMs: number = currentDate.getTime() - pastDate.getTime();
-  
+
   return diffMs <= period;
 }
 
 export default function Searchresults() {
+  const { userData } = useContext(AuthContext);
   const [searchParams] = useSearchParams();
   const query = searchParams.get('q');
   const categoryId = searchParams.get('category');
   const regionId = searchParams.get('region');
   const period = searchParams.get('period');
-  const workTypeId = searchParams.get("worktype")
+  const workTypeId = searchParams.get('worktype');
   const baseUrl = import.meta.env.VITE_URL + '/api/job-listings';
   const url = categoryId ? `${import.meta.env.VITE_URL}/api/job-categories/${categoryId}` : baseUrl;
+  const [favorites, setFavorites] = useState<number[]>([]);
   const { data } = useFetch<JobListing[] | CategoryByID>(url);
+
+  useEffect(() => {
+    if (userData) {
+      fetch(import.meta.env.VITE_URL + '/api/favorites', {
+        headers: {
+          Authorization: `Bearer ${userData.accessToken}`,
+        },
+      })
+        .then((res) => {
+          if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+          return res.json();
+        })
+        .then((data: Fav[]) => {
+          if (Array.isArray(data)) {
+            const favIds = data.map((fav) => fav.jobListingId);
+            setFavorites(favIds);
+          }
+        })
+        .catch((err) => {
+          console.error('Failed to fetch favorites:', err);
+          setFavorites([]);
+        });
+    }
+  }, [userData]);
 
   let listings = categoryId && data && !Array.isArray(data) ? data.jobListings : Array.isArray(data) ? data : [];
 
@@ -69,16 +97,16 @@ export default function Searchresults() {
   }
 
   if (workTypeId) {
-    listings = listings.filter((listing) => listing.workTypeId === Number(workTypeId));    
+    listings = listings.filter((listing) => listing.workTypeId === Number(workTypeId));
   }
 
   return (
     <div className={style.searchresultsStyle}>
       <SearchComponent />
-      <HiddenHeader topic='Hej' />
+      <HiddenHeader topic="Hej" />
       <article>
         {listings?.map((listing) => (
-          <AnnonceComponent key={listing.id} listing={listing}/>
+          <AnnonceComponent favorites={favorites} key={listing.id} listing={listing} />
         ))}
       </article>
     </div>

@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import type { JobListing } from '../../types/types';
 import style from './annoncecomponent.module.scss';
 import favorite from '../../assets/icons/icons8-favorite-50.png';
 import favFilled from '../../assets/icons/icons8-favorite-filled-50.png';
+import { AuthContext } from '../../context/context/AuthContext';
 interface AnnonceComponentProps {
   variant: 'FAV' | 'DELETE';
 }
@@ -18,12 +19,33 @@ function timeFormatter(creationTime) {
   return formattedDate;
 }
 
-export default function AnnonceComponent({ listing }: { listing: JobListing }) {
+export default function AnnonceComponent({ favorites, listing }: { favorites: number[]; listing: JobListing }) {
+  const {userData} = useContext(AuthContext)
   const [isOpen, setIsOpen] = useState(false);
-  const [isFav, setIsFav] = useState(true);
-  // function handleClick() {
-  //   setIsOpen((prev) => !prev)
-  // }
+  let isFav = favorites.includes(listing.id);
+
+  if (isFav) {
+    console.log("hej")
+  }
+
+  async function handleFavoriteClick() {
+    if (isFav) {
+      await fetch(import.meta.env.VITE_URL + `/api/favorites/${listing.id}`, {
+        method: "DELETE",
+        headers: {
+          "Authorization": `Bearer ${userData.accessToken}`
+        }
+      })
+    } else {
+      await fetch(import.meta.env.VITE_URL + `/api/favorites/${listing.id}`, {
+        method: "POST",
+        headers: {
+          "Authorization": `Bearer ${userData.accessToken}`
+        },
+        body: JSON.stringify({ jobListingId: listing.id})
+      })
+    }
+  }
 
   return (
     <div className={style.annoncecomponentStyle}>
@@ -39,6 +61,7 @@ export default function AnnonceComponent({ listing }: { listing: JobListing }) {
           <p>Indrykket d. {timeFormatter(listing.createdAt)}</p>
           <p>Lokation: {listing.city}</p>
         </div>
+        {/* {isFav && <p>HEJ HEJ DEN ER</p>} */}
         {isOpen && (
           <>
             <p>Arbejdstid: {listing.workType.type}</p>

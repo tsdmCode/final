@@ -12,7 +12,7 @@ export function useFetch<T>(url: string) {
       try {
         const res = await fetch(url);
         const data = await res.json();
-        console.log("mydata:", data)
+        // console.log("mydata:", data)
         setData(data);
         setIsLoading(false);
       } catch (error) {

@@ -7,7 +7,7 @@ import logo from '../../assets/logo/logo-white.png';
 import { AuthContext } from '../../context/context/AuthContext';
 
 export default function Navbar() {
-  const {userData} = useContext(AuthContext)
+  const {userData, logout} = useContext(AuthContext)
   const [navVis, setNavVis] = useState(false);
 
   function logOut() {
@@ -41,7 +41,7 @@ export default function Navbar() {
                 <NavLink to={'/minside'}>Min side</NavLink>
               </li>
               {/* <hr /> */}
-              <li onClick={logOut}>
+              <li onClick={logout}>
                 <a>Logout</a>
               </li>
             </>
