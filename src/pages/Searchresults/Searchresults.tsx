@@ -38,6 +38,7 @@ export default function Searchresults() {
   const url = categoryId ? `${import.meta.env.VITE_URL}/api/job-categories/${categoryId}` : baseUrl;
   const [favorites, setFavorites] = useState<Fav[]>([]);
   const { data } = useFetch<JobListing[] | CategoryByID>(url);
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     if (userData) {
@@ -53,7 +54,7 @@ export default function Searchresults() {
         .then((data: Fav[]) => {
           if (Array.isArray(data)) {
             setFavorites(data);
-            console.log("array data:", data)
+            console.log('array data:', data);
           } else {
             setFavorites([]);
           }
@@ -76,7 +77,7 @@ export default function Searchresults() {
     const month = 1000 * 60 * 60 * 24 * 30;
     const year = 1000 * 60 * 60 * 24 * 365;
     let filterPeriod: number;
-    
+
     switch (period) {
       case 'Uge':
         filterPeriod = week;
@@ -101,16 +102,32 @@ export default function Searchresults() {
   if (workTypeId) {
     listings = listings.filter((listing) => listing.workTypeId === Number(workTypeId));
   }
+  function previousPage() {
+    setCurrentPage((prev) => prev - 1);
+  }
+  function nextPage() {
+    setCurrentPage((prev) => prev + 1);
+  }
+  
+  const maximumPages = Math.ceil(listings.length / 9);
+  const paginatedListings = listings.slice((currentPage - 1) * 5, currentPage * 5);
 
   return (
     <div className={style.searchresultsStyle}>
       <SearchComponent />
       <HiddenHeader topic="Hej" />
       <article>
-        {listings?.map((listing) => (
+        {paginatedListings?.map((listing) => (
           <AnnonceComponent favorites={favorites} key={listing.id} listing={listing} />
         ))}
       </article>
+      {maximumPages != 0 && (
+        <section className={style.paginationControls}>
+          {currentPage != 1 && <button onClick={previousPage}>Forrige side</button>}
+          
+          {currentPage != maximumPages && <button onClick={nextPage}>Næste side</button>}
+        </section>
+      )}
     </div>
   );
 }

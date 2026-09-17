@@ -1,5 +1,12 @@
-@use "../../styles/variables" as *;
+@use '../../styles/variables' as *;
 
 .searchresultsStyle {
-    background-color: $white;
+  background-color: $white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  .paginationControls {
+    display: flex;
+    justify-content: center;
+  }
 }
