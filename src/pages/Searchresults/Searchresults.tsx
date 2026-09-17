@@ -66,6 +66,10 @@ export default function Searchresults() {
     }
   }, [userData]);
 
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchParams]);
+
   let listings = categoryId && data && !Array.isArray(data) ? data.jobListings : Array.isArray(data) ? data : [];
 
   if (query) {
@@ -108,7 +112,7 @@ export default function Searchresults() {
   function nextPage() {
     setCurrentPage((prev) => prev + 1);
   }
-  
+
   const maximumPages = Math.ceil(listings.length / 9);
   const paginatedListings = listings.slice((currentPage - 1) * 5, currentPage * 5);
 
@@ -124,7 +128,7 @@ export default function Searchresults() {
       {maximumPages != 0 && (
         <section className={style.paginationControls}>
           {currentPage != 1 && <button onClick={previousPage}>Forrige side</button>}
-          
+
           {currentPage != maximumPages && <button onClick={nextPage}>Næste side</button>}
         </section>
       )}
