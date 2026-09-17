@@ -76,7 +76,7 @@ export default function Searchresults() {
     const month = 1000 * 60 * 60 * 24 * 30;
     const year = 1000 * 60 * 60 * 24 * 365;
     let filterPeriod: number;
-
+    
     switch (period) {
       case 'Uge':
         filterPeriod = week;
