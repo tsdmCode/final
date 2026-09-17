@@ -1,4 +1,8 @@
-import style from "./mypage.module.scss";
+import { useContext, useEffect, useState } from 'react';
+import UserBanner from '../../components/UserBanner/UserBanner';
+import style from './mypage.module.scss';
+import { AuthContext } from '../../context/context/AuthContext';
+import { useNavigate } from 'react-router';
 // Header:
 // I toppen af Min side vises teksten Velkommen [navn på brugeren]. Der skal også være
 // to links; et til at logge ud og et til at gå til rediger profil. Trykker brugeren på log ud,
@@ -19,5 +23,18 @@ import style from "./mypage.module.scss";
 // pagination som tilvalgsopgave skal denne også vises på både Mine annoncer og Mine
 // favoritter.
 export default function Mypage() {
-  return (<div className={style.mypageStyle}><h1>hej</h1></div>)
-};
+  const [show, setShow] = useState<'favs' | 'own'>('own');
+  const { userData, authReady } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!authReady) return;
+    if (!userData) navigate('/', { replace: true });
+  }, [userData, authReady, navigate]);
+
+  return (
+    <div className={style.mypageStyle}>
+      {userData && <UserBanner userName={userData.user.firstname} mode="minside" />}
+    </div>
+  );
+}

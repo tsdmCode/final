@@ -2,22 +2,32 @@
 .newssectionStyle {
   font-family: $fontstack;
   background-color: $altwhite;
-  padding: 2rem;
-  display: grid;
+  padding: 2rem 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
   article {
+    width: 100%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: rem 1rem;
+    gap: 2.5rem;
+    justify-items: center;
+
     figure {
-        width: 80%;
+      width: 100%;
     }
 
-    @media (max-width: 540px) {
-        grid-template-columns: repeat(1, 1fr);
-        figure {
-            width: 80%;
-        }
+    @media (max-width: 1200px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @media (max-width: 700px) {
+      grid-template-columns: repeat(1, 1fr);
+      figure {
+        margin: 0;
+        width: 100%;
+        max-width: 100%;
+      }
     }
   }
   h2 {

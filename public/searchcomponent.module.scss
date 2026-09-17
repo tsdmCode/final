@@ -97,7 +97,7 @@
     font-size: $annonceText;
     padding: $fullPadding;
     padding-right: 2.5rem;
-    background-image: url('/icons8-chevron-30.png');
+    background-image: url('src/assets/icons/icons8-chevron-30.png');
     background-repeat: no-repeat;
     background-position: right 0.5rem center;
     background-size: 1.25rem;
@@ -107,7 +107,7 @@
     }
   }
   select:open {
-    background-image: url('/icons8-back-30.png');
+    background-image: url('src/assets/icons/icons8-back-30.png');
   }
   button {
     background-color: transparent;

@@ -12,6 +12,7 @@ interface AuthContextProps {
   userData: UserData | null;
   setUserData: React.Dispatch<SetStateAction<UserData | null>>;
   logout: () => void;
+  authReady: boolean;
 }
 
 // Opret context og kald den AuthContext

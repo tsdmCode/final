@@ -108,7 +108,7 @@ export default function Register() {
 
   return (
     <div className={style.registerStyle}>
-      <UserBanner />
+      <UserBanner userName="" mode="register" />
       {/* <article>
         <h2>Log ind eller opret dig som bruger</h2>
         <p>

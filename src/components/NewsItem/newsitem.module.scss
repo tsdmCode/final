@@ -1,9 +1,9 @@
 @use '../../styles/variables' as *;
 
 .newsitemStyle {
-  height: 340px;
-  width: 356px;
-  border: 1px solid gray;
+  width: 100%;
+  // max-width: 356px;
+  @include borderValues(1px, #00000033);
   background-color: $fullWhite;
   border-radius: 14px;
   display: flex;
@@ -20,7 +20,7 @@
   }
 
   img {
-    height: 80%;
+    height: 70%;
     object-fit: cover;
   }
   .date {

@@ -1,8 +1,13 @@
 @use "../../styles/variables" as *;
 
 .categoriesStyle {
-  margin: 2rem;
+  margin: 2rem 4rem;
   background-color: $white;
+
+  h2 {
+    font-weight: $thin;
+  }
+
   .categoryGrid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);

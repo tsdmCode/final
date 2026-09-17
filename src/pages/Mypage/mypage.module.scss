@@ -1,3 +1,28 @@
-.mypageStyle {
+@use "../../styles/variables" as *;
 
+.mypageStyle {
+  article {
+    padding: 5rem 25%;
+    width: 100vw;
+    // background-size: 100vw;
+    text-align: center;
+    background-color: $altwhite;
+    margin-top: 0;
+    margin-left: -50vw;
+    margin-right: -50vw;
+
+    h2 {
+      font-size: $biggestText;
+      font-weight: $regularWeight;
+      font-family: $altfontstack;
+    }
+  }
+
+  width: 50%;
+  margin: 0rem 25% 2rem 25%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
 }

@@ -17,7 +17,15 @@ function timeFormatter(creationTime) {
   return formattedDate;
 }
 
-export default function AnnonceComponent({ favorites, listing }: { favorites: Fav[]; listing: JobListing }) {
+export default function AnnonceComponent({
+  favorites,
+  listing,
+  mode = 'search',
+}: {
+  favorites: Fav[];
+  listing: JobListing;
+  mode: 'search' | 'favorite' | 'owned';
+}) {
   const [isLoading, setIsLoading] = useState(false);
   const [localFav, setLocalFav] = useState(false);
   const { userData } = useContext(AuthContext);
@@ -29,7 +37,7 @@ export default function AnnonceComponent({ favorites, listing }: { favorites: Fa
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setLocalFav(favorites.some((fav) => fav.jobListingId === listing.id));
   }, [favorites, listing.id]);
-  
+
   async function handleFavoriteClick() {
     if (!userData) {
       alert('Du skal lige være logget ind makker');
@@ -68,6 +76,28 @@ export default function AnnonceComponent({ favorites, listing }: { favorites: Fa
     }
   }
 
+  async function handleDelete() {
+    setIsLoading(true);
+
+    try {
+      const res = await fetch(import.meta.env.VITE_URL + `/api/job-listings/${listing.id}`, {
+        method: 'DELETE',
+        headers: {
+          Authorization: `Bearer ${userData.accessToken}`,
+        },
+      });
+
+      if (!res.ok) {
+        throw new Error(`Kunne ikke slette`);
+      }
+
+      alert('Indslag slettet');
+    } catch (error) {
+      alert('Der skete en fejl');
+      console.error(error);
+    }
+  }
+
   return (
     <div className={style.annoncecomponentStyle}>
       <article className={style.Info}>
@@ -101,9 +131,15 @@ export default function AnnonceComponent({ favorites, listing }: { favorites: Fa
           </>
         )}
         <div className={style.controls}>
-          <button onClick={handleFavoriteClick}>
-            <img src={localFav ? favFilled : favorite} alt="" /> {localFav ? 'Fjern' : 'Gem'}
-          </button>
+          {mode === 'owned' ? (
+            <button disabled={isLoading} onClick={handleDelete}>
+              Slet
+            </button>
+          ) : (
+            <button disabled={isLoading} onClick={handleFavoriteClick}>
+              <img src={localFav ? favFilled : favorite} alt="" /> {localFav ? 'Fjern' : 'Gem'}
+            </button>
+          )}
 
           <button disabled={isLoading} onClick={() => setIsOpen((prev) => !prev)}>
             {isOpen ? 'Luk' : 'Åben'}

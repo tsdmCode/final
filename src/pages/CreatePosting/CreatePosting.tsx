@@ -60,7 +60,13 @@ export default function CreatePosting() {
       setMessageError('Venligst vælg en kategori');
       return;
     }
-
+     if (!city.trim()) {
+      setMessageError("Husk at skrive en by ind");
+      return
+    } else if (noSpecials.test(city)) {
+      setMessageError("Ingen specialtegn i by tak")
+      return;
+    }
     if (!address.trim()) {
       setMessageError('Indtast en addresse');
       return;
