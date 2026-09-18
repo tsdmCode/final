@@ -1,6 +1,4 @@
-import { useContext } from 'react';
 import style from './userbanner.module.scss';
-import { AuthContext } from '../../context/context/AuthContext';
 
 export default function UserBanner({ mode, userName="" }: { mode: 'register' | 'minside'; userName: string }) {
 

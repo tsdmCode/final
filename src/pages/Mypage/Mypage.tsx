@@ -3,6 +3,7 @@ import UserBanner from '../../components/UserBanner/UserBanner';
 import style from './mypage.module.scss';
 import { AuthContext } from '../../context/context/AuthContext';
 import { useNavigate } from 'react-router';
+import AnnonceComponent from '../../components/AnnonceComponent/AnnonceComponent';
 // Header:
 // I toppen af Min side vises teksten Velkommen [navn på brugeren]. Der skal også være
 // to links; et til at logge ud og et til at gå til rediger profil. Trykker brugeren på log ud,
@@ -35,6 +36,11 @@ export default function Mypage() {
   return (
     <div className={style.mypageStyle}>
       {userData && <UserBanner userName={userData.user.firstname} mode="minside" />}
+
+      <div className={style.controlButtons}>
+        <button onClick={() => setShow('own')}>Mine annoncer</button>
+        <button onClick={() => setShow('favs')}>Mine favoritter</button>
+      </div>
     </div>
   );
 }

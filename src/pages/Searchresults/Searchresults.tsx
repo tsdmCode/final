@@ -1,7 +1,7 @@
 import { useSearchParams } from 'react-router';
 import SearchComponent from '../../components/SearchComponent/SearchComponent';
 import { useFetch } from '../../hooks/useFetch';
-import type { Fav, CategoryByID, JobListing, UserData } from '../../types/types';
+import type { Fav, CategoryByID, JobListing } from '../../types/types';
 import style from './searchresults.module.scss';
 import HiddenHeader from '../../components/HiddenHeader/HiddenHeader';
 import AnnonceComponent from '../../components/AnnonceComponent/AnnonceComponent';
@@ -67,6 +67,8 @@ export default function Searchresults() {
   }, [userData]);
 
   useEffect(() => {
+
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setCurrentPage(1);
   }, [searchParams]);
 
@@ -106,9 +108,11 @@ export default function Searchresults() {
   if (workTypeId) {
     listings = listings.filter((listing) => listing.workTypeId === Number(workTypeId));
   }
+
   function previousPage() {
     setCurrentPage((prev) => prev - 1);
   }
+
   function nextPage() {
     setCurrentPage((prev) => prev + 1);
   }

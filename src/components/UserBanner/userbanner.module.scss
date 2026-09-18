@@ -1,20 +1,18 @@
-@use "../../styles/variables" as *;
+@use '../../styles/variables' as *;
 
 .userbannerStyle {
-   
-    padding: 5rem 25%;
-    width: 100vw;
-    // background-size: 100vw;
-    text-align: center;
-    background-color: $altwhite;
-    margin-top: 0;
-    margin-left: -50vw;
-    margin-right: -50vw;
+  padding: 5rem 25%;
+  width: 100%;
+  // background-size: 100vw;
+  text-align: center;
+  background-color: $altwhite;
+  // margin-top: 0;
+  // margin-left: -50vw;
+  // margin-right: -50vw;
 
-    h2 {
-      font-size: $biggestText;
-      font-weight: $regularWeight;
-      font-family: $altfontstack;
-    }
-  
+  h2 {
+    font-size: $biggestText;
+    font-weight: $regularWeight;
+    font-family: $altfontstack;
+  }
 }

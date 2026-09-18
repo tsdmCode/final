@@ -7,7 +7,7 @@ export default function Categories() {
   const { data } = useFetch<JobCategoryWithCount[]>(import.meta.env.VITE_URL + '/api/job-categories-count');
 
   const renderedCategories = data?.map((category) => <CategoryCard category={category} />);
-
+  
   return (
     <section className={style.categoriesStyle}>
       <h2>Kategorier</h2>

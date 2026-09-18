@@ -6,7 +6,7 @@ import favFilled from '../../assets/icons/icons8-favorite-filled-50.png';
 import { AuthContext } from '../../context/context/AuthContext';
 
 //todo register page og flyt det her VV OG lav noget refresh
-function timeFormatter(creationTime) {
+function timeFormatter(creationTime: string) {
   const date = new Date(creationTime);
   const day = date.getDate();
   const month = date.getMonth() + 1;
@@ -24,7 +24,7 @@ export default function AnnonceComponent({
 }: {
   favorites: Fav[];
   listing: JobListing;
-  mode: 'search' | 'favorite' | 'owned';
+  mode?: 'search' | 'favorite' | 'owned';
 }) {
   const [isLoading, setIsLoading] = useState(false);
   const [localFav, setLocalFav] = useState(false);
@@ -83,7 +83,7 @@ export default function AnnonceComponent({
       const res = await fetch(import.meta.env.VITE_URL + `/api/job-listings/${listing.id}`, {
         method: 'DELETE',
         headers: {
-          Authorization: `Bearer ${userData.accessToken}`,
+          Authorization: `Bearer ${userData?.accessToken}`,
         },
       });
 

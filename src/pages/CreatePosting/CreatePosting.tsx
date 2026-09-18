@@ -60,11 +60,11 @@ export default function CreatePosting() {
       setMessageError('Venligst vælg en kategori');
       return;
     }
-     if (!city.trim()) {
-      setMessageError("Husk at skrive en by ind");
-      return
+    if (!city.trim()) {
+      setMessageError('Husk at skrive en by ind');
+      return;
     } else if (noSpecials.test(city)) {
-      setMessageError("Ingen specialtegn i by tak")
+      setMessageError('Ingen specialtegn i by tak');
       return;
     }
     if (!address.trim()) {
@@ -94,7 +94,7 @@ export default function CreatePosting() {
     }
 
     if (!workTypeId) {
-      setMessageError("Vælg venligst en type arbejde")
+      setMessageError('Vælg venligst en type arbejde');
       return;
     }
 
@@ -102,7 +102,7 @@ export default function CreatePosting() {
       await fetch(import.meta.env.VITE_URL + '/api/job-listings', {
         method: 'POST',
         headers: {
-          Authorization: `Bearer ${userData.accessToken}`,
+          Authorization: `Bearer ${userData?.accessToken}`,
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
@@ -116,7 +116,7 @@ export default function CreatePosting() {
           workTypeId,
           workHome,
           zipcode,
-          userId: userData.user.id,
+          userId: userData?.user.id,
         }),
       });
 

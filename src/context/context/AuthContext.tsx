@@ -1,5 +1,5 @@
 import { createContext, type SetStateAction } from 'react';
-import type { UserData } from '../types/types';
+import type { UserData } from '../../types/types';
 
 export interface UserClass {
   id: string;
