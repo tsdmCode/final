@@ -29,7 +29,7 @@ Meget af det jeg ved om searchParams og pagination kommer fra [Scrimba](https://
 
 ### Bedømmelse
 Til min eksamen vil jeg gerne snakke om Regexes, hvordan de virker og lignende. 
-Kommer også til at snakke om searchParams.
+Kommer også til at snakke om searchParams, samt mit bash script.
 
 ### Bilag
 Min tidsplan har været sådan meget løs, da jeg som nævnt har været let all over the place i den her uge, men har en let skitseret plan. \
