@@ -26,26 +26,30 @@
     @media (max-width: 480px) {
       flex-direction: column;
       gap: 0.5rem;
+
+      input {
+        border-radius: 14px;
+      }
     }
 
     input {
       padding: 1rem;
       font-size: $headerText;
       @include borderValues(1px, #00000033);
-      background-image: url('/icons8-search-50.png');
-      background-repeat: no-repeat;
-      background-position: left 0.5rem center;
-      background-size: 1.25rem;
     }
-
+    
     input[type='text'] {
       width: 100%;
       flex: 1;
+      font-family: $fontstack;
       padding-left: 2rem;
       border-top-left-radius: 14px;
       border-bottom-left-radius: 14px;
       border-right: none;
-
+      background-image: url('/icons8-search-50.png');
+      background-repeat: no-repeat;
+      background-position: left 0.5rem center;
+      background-size: 1.25rem;
       @media (max-width: 480px) {
         padding-left: 1rem;
       }
@@ -110,9 +114,11 @@
       width: 100%;
     }
   }
+
   select:open {
     background-image: url('/icons8-back-30.png');
   }
+
   button {
     background-color: transparent;
     outline: none;

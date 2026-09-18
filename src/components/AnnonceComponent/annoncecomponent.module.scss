@@ -10,9 +10,6 @@
   border-radius: 14px;
   background-color: $fullWhite;
 
-  article {
-    // width: 100%;
-  }
   .Info {
     p:first-of-type {
       font-size: $smallText;
@@ -43,6 +40,7 @@
   button {
     background-color: $altwhite;
     border-radius: 14px;
+    padding: 0.5rem 3rem;
     @include borderValues(1px, #00000033);
     flex: 1;
   }
@@ -53,7 +51,8 @@
     margin: 1rem;
     padding: 1rem;
   }
-  button:first-of-type {
+
+  .favButton {
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -61,5 +60,10 @@
     img {
       width: 30%;
     }
+  }
+
+  .dangerButton {
+    background-color: $accent;
+    color: $white;
   }
 }

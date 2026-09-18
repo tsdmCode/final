@@ -8,6 +8,7 @@
 }
 
 .navmenuStyle {
+  position: relative;
   background-color: $accent;
   position: fixed;
   margin-left: 0;
@@ -34,6 +35,15 @@
     flex-direction: column;
     margin: 0;
   }
+ }
+
+ button {
+  position: absolute;
+  top: 10rem;
+  right: 25%;
+  background: transparent;
+  border: none;
+  outline: none;
  }
 }
 

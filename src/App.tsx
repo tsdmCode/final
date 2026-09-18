@@ -3,7 +3,6 @@ import { Layout } from "./layouts/Layout"
 import Frontpage from "./pages/Frontpage/Frontpage"
 import News from "./pages/News/News"
 import CreatePosting from "./pages/CreatePosting/CreatePosting"
-import Login from "./pages/Login/Login"
 import Mypage from "./pages/Mypage/Mypage"
 import Searchresults from "./pages/Searchresults/Searchresults"
 import Register from "./pages/Register/Register"
@@ -18,7 +17,6 @@ function App() {
             <Route index element={<Frontpage />} />
             <Route path="news/:id" element={<News />} />
             <Route path="opretannonce" element={<CreatePosting />} />
-            <Route path="login" element={<Login />} />
             <Route path="register" element={<Register />} />
             <Route path="minside" element={<Mypage />} />
             <Route path="searchresults" element={<Searchresults />} /> 

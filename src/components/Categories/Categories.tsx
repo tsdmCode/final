@@ -10,7 +10,7 @@ export default function Categories() {
   
   return (
     <section className={style.categoriesStyle}>
-      <h2>Kategorier</h2>
+      <h2>Find job ved kategori</h2>
       <div className={style.categoryGrid}>{renderedCategories}</div>
     </section>
   );

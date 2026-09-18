@@ -3,37 +3,59 @@ import UserBanner from '../../components/UserBanner/UserBanner';
 import style from './mypage.module.scss';
 import { AuthContext } from '../../context/context/AuthContext';
 import { useNavigate } from 'react-router';
+import type { Fav, JobListing } from '../../types/types';
 import AnnonceComponent from '../../components/AnnonceComponent/AnnonceComponent';
 import HiddenHeader from '../../components/HiddenHeader/HiddenHeader';
-// Header:
-// I toppen af Min side vises teksten Velkommen [navn på brugeren]. Der skal også være
-// to links; et til at logge ud og et til at gå til rediger profil. Trykker brugeren på log ud,
-// skal alle variabler/cookies/storage der gemmer brugerens data ryddes og brugeren
-// skal føres tilbage til log ind siden. Derudover skal der sendes en log out request til
-// API´et så brugerens refresh token slettes.
-// Side skifter:
-// Min side er todelt med en ”skifter” i toppen af siden. Der kan enten vælges Mine
-// annoncer eller Mine favoritter. Den valgte side skal highlightes med rød og skifte til
-// det modsatte når brugeren trykker på denne.
-// Mine annoncer:
-// Under Mine annoncer skal brugeren kunne se alle de jobannoncer som de har
-// oprettet. Hertil skal der være mulighed for at slette en annonce eller redigere den
-// hvis man har valgt dette som tilvalgsopgave (se længere nede).
-// Mine favoritter
-// Under Mine favoritter vises alle de jobannoncer som brugeren har gemt. Her skal det
-// være muligt at åbne annoncen eller at fjerne den som favorit. Hvis du vælger at lave
-// pagination som tilvalgsopgave skal denne også vises på både Mine annoncer og Mine
-// favoritter.
+import { useFetch } from '../../hooks/useFetch';
+import PaginationControls from '../../components/PaginationDots/PaginationControls';
+
 export default function Mypage() {
   const [show, setShow] = useState<'favs' | 'own'>('own');
+  const [favorites, setFavorites] = useState<Fav[]>([]);
+  const { data: listingData } = useFetch<JobListing[]>(import.meta.env.VITE_URL + '/api/job-listings');
   const { userData, authReady } = useContext(AuthContext);
   const navigate = useNavigate();
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const listings = listingData ?? [];
 
   useEffect(() => {
     if (!authReady) return;
     if (!userData) navigate('/', { replace: true });
   }, [userData, authReady, navigate]);
 
+  useEffect(() => {
+    if (userData) {
+      fetch(import.meta.env.VITE_URL + '/api/favorites', {
+        headers: {
+          Authorization: `Bearer ${userData.accessToken}`,
+        },
+      })
+        .then((res) => {
+          if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+          return res.json();
+        })
+        .then((data: Fav[]) => {
+          if (Array.isArray(data)) {
+            setFavorites(data);
+          } else {
+            setFavorites([]);
+          }
+        })
+        .catch((err) => {
+          console.error('Kunne ikke få favoritter:', err);
+          setFavorites([]);
+        });
+    }
+  }, [userData]);
+
+  const ownedListings = listings.filter((listing) => listing.userId === userData?.user.id);
+  const favoriteListings = favorites.map((fav) => fav.jobListing);
+
+  const activeListings = show === 'own' ? ownedListings : favoriteListings;
+  const totalPages = Math.ceil(activeListings?.length / 5);
+  
+  const paginatedListings = activeListings.slice((currentPage - 1) * 5, currentPage * 5);
   return (
     <div className={style.mypageStyle}>
       <title>Min Side</title>
@@ -41,9 +63,27 @@ export default function Mypage() {
       {userData && <UserBanner userName={userData.user.firstname} mode="minside" />}
 
       <div className={style.controlButtons}>
-        <button onClick={() => setShow('own')}>Mine annoncer</button>
-        <button onClick={() => setShow('favs')}>Mine favoritter</button>
+        <button className={show === 'own' ? style.active : ''} onClick={() => setShow('own')}>
+          Mine annoncer
+        </button>
+        <button className={show === 'favs' ? style.active : ''} onClick={() => setShow('favs')}>
+          Mine favoritter
+        </button>
       </div>
+
+      <article className={style.list}>
+        {show === 'own' &&
+          paginatedListings.map((listing) => (
+            <AnnonceComponent key={listing.id} listing={listing} favorites={favorites} mode="owned" />
+          ))}
+        {show === 'favs' &&
+          paginatedListings.map((listing) => (
+            <AnnonceComponent key={listing.id} listing={listing} favorites={favorites} mode="favorite" />
+          ))}
+      </article>
+      {totalPages != 0 && (
+        <PaginationControls currentPage={currentPage} totalPages={totalPages} onPageChange={setCurrentPage} />
+      )}
     </div>
   );
 }

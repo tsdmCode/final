@@ -112,7 +112,6 @@ export default function AnnonceComponent({
           <p>Indrykket d. {timeFormatter(listing.createdAt)}</p>
           <p>Lokation: {listing.city}</p>
         </div>
-        {/* {isFav && <p>HEJ HEJ DEN ER</p>} */}
         {isOpen && (
           <>
             <p>Arbejdstid: {listing.workType.type}</p>
@@ -132,11 +131,11 @@ export default function AnnonceComponent({
         )}
         <div className={style.controls}>
           {mode === 'owned' ? (
-            <button disabled={isLoading} onClick={handleDelete}>
+            <button className={style.dangerButton} disabled={isLoading} onClick={handleDelete}>
               Slet
             </button>
           ) : (
-            <button disabled={isLoading} onClick={handleFavoriteClick}>
+            <button className={style.favButton} disabled={isLoading} onClick={handleFavoriteClick}>
               <img src={localFav ? favFilled : favorite} alt="" /> {localFav ? 'Fjern' : 'Gem'}
             </button>
           )}

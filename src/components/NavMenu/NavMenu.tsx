@@ -1,17 +1,11 @@
-import {useState } from 'react';
+import { useContext } from 'react';
 import style from './navmenu.module.scss';
 import { NavLink } from 'react-router';
 import { IoMdClose } from 'react-icons/io';
+import { AuthContext } from '../../context/context/AuthContext';
 
 export default function NavMenu({ setNavVis }: { setNavVis: (arg0: boolean) => void }) {
-  const [userData] = useState(false); //igen placeholder
-  // const [email, setEmail] = useState('');
-  // const [password, setPassword] = useState('');
-  // const { userData, setUserData, logout } = useContext(AuthContext);
-  function logOut() {
-    //placeholder
-  }
-  // const navigate = useNavigate();
+  const { userData, logout } = useContext(AuthContext);
 
   return (
     <div className={style.navmenuStyle}>
@@ -24,7 +18,7 @@ export default function NavMenu({ setNavVis }: { setNavVis: (arg0: boolean) => v
             <NavLink to={'/opretannonce'}>Opret Annonce</NavLink>
           </li>
           <li>
-            <NavLink className={({ isActive }) => (isActive ? style.active : '')} to={'/news'}>
+            <NavLink className={({ isActive }) => (isActive ? style.active : '')} to={'/news/1'}>
               Nyheder
             </NavLink>
           </li>
@@ -33,7 +27,7 @@ export default function NavMenu({ setNavVis }: { setNavVis: (arg0: boolean) => v
               <li>
                 <NavLink to={'/minside'}>Min side</NavLink>
               </li>
-              <li onClick={logOut}>
+              <li onClick={logout}>
                 <a>Logout</a>
               </li>
             </>
@@ -52,13 +46,13 @@ export default function NavMenu({ setNavVis }: { setNavVis: (arg0: boolean) => v
               <li>
                 <NavLink to={'/myschedule'}>My Schedule</NavLink>
               </li>
-              <li onClick={logOut}>Log out</li>
+              <li onClick={logout}>Log out</li>
             </>
           )}
         </ul>
 
         <button onClick={() => setNavVis(false)}>
-          <IoMdClose size={36} />
+          <IoMdClose color="#fff" size={36} />
         </button>
       </nav>
     </div>

@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react';
 import style from './navbar.module.scss';
-import { NavLink } from 'react-router';
+import { NavLink, useNavigate } from 'react-router';
 import { GiHamburgerMenu } from "react-icons/gi";
 import NavMenu from '../NavMenu/NavMenu';
 import logo from '../../assets/logo/logo-white.png';
@@ -9,10 +9,10 @@ import { AuthContext } from '../../context/context/AuthContext';
 export default function Navbar() {
   const {userData, logout} = useContext(AuthContext)
   const [navVis, setNavVis] = useState(false);
-
+  const navigate = useNavigate()
   return (
     <header className={style.navbarStyle}>
-      <img src={logo} alt="" />
+      <img onClick={() =>navigate("/")} src={logo} alt="Gratissimo" />
       <nav>
         <ul>
           <li>

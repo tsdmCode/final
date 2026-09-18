@@ -35,25 +35,6 @@ export interface Fav {
   jobListing: JobListing;
 }
 
-// export interface JobListing {
-//   id: number;
-//   createdAt: string;
-//   description: string;
-//   title: string;
-//   address: string;
-//   zipcode: number;
-//   organization: string;
-//   city: string;
-//   workHome: string;
-//   regionId: number;
-//   userId: number;
-//   jobCategoryId: number;
-//   workTypeId: number;
-//   region: JobCategory;
-//   workType: WorkType;
-//   jobCategory: JobCategory;
-// }
-
 export interface JobCategory {
   id: number;
   name: string;
@@ -73,30 +54,6 @@ export interface CategoryByID {
   id: number;
   name: string;
   jobListings: JobListing[];
-}
-
-// export interface JobListing {
-//   id: number;
-//   createdAt: string;
-//   description: string;
-//   title: string;
-//   address: string;
-//   zipcode: number;
-//   organization: string;
-//   city: string;
-//   workHome: WorkHome;
-//   regionId: number;
-//   userId: number;
-//   jobCategoryId: number;
-//   workTypeId: number;
-//   region: JobCategory;
-//   workType: WorkType;
-//   jobCategory: JobCategory;
-// }
-
-export interface JobCategory {
-  id: number;
-  name: string;
 }
 
 export interface JobCategoryWithCount extends JobCategory {

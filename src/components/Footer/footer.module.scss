@@ -35,6 +35,20 @@
     flex: 1;
     display: flex;
     min-width: 0;
+
+    @media (max-width: 486px) {
+      flex-direction: column;
+
+      input[type="email"] {
+        border-top-left-radius: 14px;
+        border-top-right-radius: 14px;
+      } 
+      
+      input[type="submit"] {
+        border-bottom-left-radius: 14px;
+        border-bottom-right-radius: 14px;
+      } 
+    }
   }
 
   .soMe {
@@ -85,9 +99,10 @@
   .footerStyle {
     padding: 2rem 1.5rem;
     flex-direction: column;
-
+    
     section {
       width: 100%;
+      flex: 0;
     }
   }
 }
