@@ -36,7 +36,7 @@ export default function Register() {
       return;
     }
 
-    if (!phoneRegex.test(phone)) {
+    if (!phoneRegex.test(phone.trim())) {
       setMessageError('Ugyldigt tlf nummer');
       return;
     }
@@ -72,7 +72,7 @@ export default function Register() {
           throw new Error(`HTTP error! status: ${res.status}`);
         }
 
-        navigate('/login');
+        navigate('/register?mode=login');
         // return res.text();
       })
       .catch((error) => {
@@ -122,7 +122,7 @@ export default function Register() {
       <h2>{mode === 'register' ? 'Opret ny Profil' : 'Log ind'}</h2>
       <>
         {mode === 'register' ? (
-          <form action={handleRegister}>
+          <form noValidate action={handleRegister}>
             <span>
               <label htmlFor="email">Email</label>
               <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} name="email" />

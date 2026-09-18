@@ -126,7 +126,7 @@ export default function CreatePosting() {
         }}
         noValidate
       >
-        {messageError && <p className={style.errorMessage}>{messageError}</p>}
+        
         <div className={style.grid}>
           <div>
             <span>
@@ -221,6 +221,7 @@ export default function CreatePosting() {
         </div>
 
         <input type="submit" value={'Opret annonce'}></input>
+        {messageError && <p className={style.errorMessage}>{messageError}</p>}
       </form>
     </div>
   );

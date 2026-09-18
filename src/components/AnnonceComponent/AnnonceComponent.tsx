@@ -1,11 +1,10 @@
 import { useContext, useState, useEffect } from 'react';
 import type { Fav, JobListing } from '../../types/types';
 import style from './annoncecomponent.module.scss';
-import favorite from '../../assets/icons/icons8-favorite-50.png';
-import favFilled from '../../assets/icons/icons8-favorite-filled-50.png';
+import favorite from '/icons8-favorite-50.png';
+import favFilled from '/icons8-favorite-filled-50.png';
 import { AuthContext } from '../../context/context/AuthContext';
 
-//todo register page og flyt det her VV OG lav noget refresh
 function timeFormatter(creationTime: string) {
   const date = new Date(creationTime);
   const day = date.getDate();

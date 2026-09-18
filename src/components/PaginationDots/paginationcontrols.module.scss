@@ -5,27 +5,22 @@
   gap: 1rem;
   justify-content: center;
   align-items: center;
+  justify-self: center;
   margin-top: 2rem;
   margin-bottom: 2rem;
   @include borderValues(1px, #00000066);
   border-radius: 24px;
   padding: 0.75rem;
-
+  margin-inline: auto;
+  
   button {
     background-color: $white;
     @include borderValues(1px, #00000066);
-    border-radius: 50%;
     width: 3rem;
     height: 3rem;
-    padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-
-    &.active {
-      background-color: $accent;
-      color: $white;
-    }
 
     @media (max-width: 600px) {
       width: 2.25rem;

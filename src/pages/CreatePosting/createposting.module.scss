@@ -29,14 +29,14 @@
       select {
         -webkit-appearance: none;
         -moz-appearance: none;
-        background-image: url('src/assets/icons/icons8-chevron-30.png');
+        background-image: url('/icons8-chevron-30.png');
         background-repeat: no-repeat;
         background-position: right 0.5rem center;
         background-size: 1.25rem;
       }
 
       select:open {
-        background-image: url('src/assets/icons/icons8-back-30.png');
+        background-image: url('icons8-back-30.png');
       }
 
       input,
