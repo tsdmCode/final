@@ -1,0 +1,29 @@
+@use '../../styles/variables' as *;
+
+.newsStyle {
+}
+
+.bigArticle {
+  margin: 0;
+  h2 {
+    font-size: $doubleSize;
+    font-weight: $bold;
+  }
+
+  img {
+    display: block;
+    width: 100vw;
+    height: 450px;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+  }
+
+  .date {
+    color: $accent;
+    font-size: $dateText;
+    font-weight: 300;
+  }
+  figcaption {
+    margin: 0 10%;
+  }
+}

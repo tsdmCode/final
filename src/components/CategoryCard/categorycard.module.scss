@@ -1,0 +1,40 @@
+@use "../../styles/variables" as *;
+
+.categorycardStyle {
+    font-family: $fontstack;
+    display: flex;
+    width: 100%;
+    border-radius: 14px;
+    border: 1px solid gray;
+    overflow: hidden;
+    font-size: $biggerText;
+    text-align: center;
+    cursor: pointer;
+    p {
+        margin: 0;
+    }
+
+    p:first-of-type {
+        width: 66%;
+        padding: $mediumPadding;
+    }
+
+    p:last-of-type {
+        width: 36%;
+        text-align: center;
+        background-color: $altwhite;
+        padding: $mediumPadding;
+    }
+
+    @media (max-width: 1088px) {
+        font-size: $regular;
+    }
+    @media (max-width: 938px) {
+        font-size: $smallText;
+    }
+    @media (max-width: 540px) {
+        font-size: $smallText;
+        width: 80%;
+        margin: 0 auto;
+    }
+}

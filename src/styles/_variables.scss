@@ -1,0 +1,44 @@
+$fontstack: Montserrat, sans-serif;
+$altfontstack:  Montserrat Alternates, sans-serif;
+// #region farver
+
+$accent: #8b0808;
+$altwhite: #f5eeec;
+$white: #f9f9f9;
+$main: #ab0e0e;
+$fullWhite: #ffffff;
+
+// #endregion
+
+// #region vægte
+
+$thin: 300;
+$regularWeight: 400;
+$bold: 500;
+$bolder: 600;
+
+// #endregion
+
+// #region font størrelser
+
+$smallText: 0.75rem; //12px
+$dateText: 0.8125rem; //13px
+$annonceText: 0.875rem; //14px
+$regular: 1rem; //16px, duh
+$doubleSize: 2rem; //32px
+$biggerText: 1.25rem; //20px;
+$headerText: 1.5rem; //24px
+$pageHeader: 2.25rem; //36px
+$biggestText: 2.5rem; //40px
+
+$smallPadding: 0.25rem; //4px;
+$mediumPadding: 0.5rem; //8px
+$fullPadding: 1rem; //16px, igen duh
+
+// #endregion
+
+//#region mixins
+
+@mixin borderValues($thickness, $color) {
+    border: $thickness solid $color;
+}

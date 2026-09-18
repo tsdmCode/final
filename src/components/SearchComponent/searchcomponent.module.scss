@@ -1,0 +1,140 @@
+@use '../../styles/variables' as *;
+
+.searchcomponentStyle {
+  background-color: $altwhite;
+  padding: 1rem 4rem;
+  display: flex;
+  flex-direction: column;
+
+  @media (max-width: 768px) {
+    padding: 1rem 1.5rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 1rem;
+  }
+
+  h2 {
+    font-size: $pageHeader;
+    font-weight: $regularWeight;
+  }
+
+  form {
+    display: flex;
+    flex-direction: row;
+
+    @media (max-width: 480px) {
+      flex-direction: column;
+      gap: 0.5rem;
+
+      input {
+        border-radius: 14px;
+      }
+    }
+
+    input {
+      padding: 1rem;
+      font-size: $headerText;
+      @include borderValues(1px, #00000033);
+    }
+    
+    input[type='text'] {
+      width: 100%;
+      flex: 1;
+      font-family: $fontstack;
+      padding-left: 2rem;
+      border-top-left-radius: 14px;
+      border-bottom-left-radius: 14px;
+      border-right: none;
+      background-image: url('/icons8-search-50.png');
+      background-repeat: no-repeat;
+      background-position: left 0.5rem center;
+      background-size: 1.25rem;
+      @media (max-width: 480px) {
+        padding-left: 1rem;
+      }
+    }
+
+    input[type='submit'] {
+      background-color: $main;
+      border-top-right-radius: 14px;
+      border-bottom-right-radius: 14px;
+      color: $fullWhite;
+      width: 10%;
+      border-left: none;
+
+      @media (max-width: 768px) {
+        width: 15%;
+      }
+
+      @media (max-width: 480px) {
+        width: 100%;
+      }
+    }
+
+  }
+
+  .filters {
+    margin: $mediumPadding;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+
+    @media (max-width: 768px) {
+      gap: 1rem;
+    }
+
+    @media (max-width: 480px) {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    
+  }
+
+  select,
+  option {
+    font-family: $fontstack;
+  }
+
+  select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 14px;
+    background-color: $fullWhite;
+    border: 1px solid #00000033;
+    font-size: $annonceText;
+    padding: $fullPadding;
+    padding-right: 2.5rem;
+    background-image: url('/icons8-chevron-30.png');
+    background-repeat: no-repeat;
+    background-position: right 0.5rem center;
+    background-size: 1.25rem;
+
+    @media (max-width: 480px) {
+      width: 100%;
+    }
+
+  }
+
+  select:open {
+    background-image: url('/icons8-back-30.png');
+
+  }
+
+  button {
+    background-color: transparent;
+    outline: none;
+    border: none;
+
+    @media (max-width: 480px) {
+      width: 100%;
+      background-color: $main;
+      color: $fullWhite;
+      padding: 1rem;
+      border-radius: 14px;
+      
+    }
+  }
+}

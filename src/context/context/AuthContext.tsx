@@ -1,0 +1,19 @@
+import { createContext, type SetStateAction } from 'react';
+import type { UserData } from '../../types/types';
+
+export interface UserClass {
+  id: string;
+  firstname: string;
+  lastname: string;
+}
+
+// TS - inteface til typer
+interface AuthContextProps {
+  userData: UserData | null;
+  setUserData: React.Dispatch<SetStateAction<UserData | null>>;
+  logout: () => void;
+  authReady: boolean;
+}
+
+// Opret context og kald den AuthContext
+export const AuthContext = createContext<AuthContextProps>(undefined!);

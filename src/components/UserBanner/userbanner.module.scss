@@ -1,0 +1,15 @@
+@use '../../styles/variables' as *;
+
+.userbannerStyle {
+  padding: 5rem 25%;
+  width: 100%;
+  text-align: center;
+  background-color: $altwhite;
+
+  h2 {
+    font-size: $biggestText;
+    font-weight: $regularWeight;
+    font-family: $altfontstack;
+  }
+  
+}

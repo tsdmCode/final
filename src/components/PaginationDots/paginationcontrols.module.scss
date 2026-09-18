@@ -1,0 +1,45 @@
+@use '../../styles/variables' as *;
+
+.paginationcontrolsStyle {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  justify-self: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  @include borderValues(1px, #00000066);
+  border-radius: 24px;
+  padding: 0.75rem;
+  margin-inline: auto;
+
+  button {
+    background-color: $white;
+    @include borderValues(1px, #00000066);
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @media (max-width: 600px) {
+      width: 2.25rem;
+      height: 2.25rem;
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 400px) {
+      width: 1.75rem;
+      height: 1.75rem;
+      font-size: 0.75rem;
+    }
+  }
+
+  .arrow {
+    border: 0;
+    border-radius: 0;
+    overflow: hidden;
+    padding: 0.25;
+  }
+  
+}

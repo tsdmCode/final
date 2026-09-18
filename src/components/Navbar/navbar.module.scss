@@ -1,3 +1,73 @@
-.navbarStyle {
+@use '../../styles/variables' as *;
 
+.navbarStyle {
+  background-color: $main;
+  color: $white;
+  font-family: $altfontstack;
+
+  .burger {
+    display: none;
+  }
+
+  img {
+    width: 400px;
+    margin-left: 4rem;
+  }
+
+  nav {
+    padding: $fullPadding 4rem;
+    background-color: $accent;
+    display: flex;
+    justify-content: space-between;
+
+    ul {
+      display: flex;
+      gap: 1rem;
+
+      hr {
+        color: white;
+        height: 100%;
+      }
+
+      a {
+        color: inherit;
+      }
+    }
+
+    .loginList {
+      li {
+        padding-left: $fullPadding;
+        cursor: pointer;
+      }
+      li:nth-of-type(2) {
+        border-left: 1px solid white;
+      }
+    }
+  }
+
+  @media (max-width: 700px) {
+    justify-content: initial;
+  }
+
+  @media (max-width: 600px) {
+    img {
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    nav {
+      display: none;
+    }
+
+    .burger {
+      display: block;
+      margin: 1rem 2rem;
+    }
+  }
+  
+}
+
+.active {
+  text-decoration: underline;
+  font-weight: $bolder;
 }

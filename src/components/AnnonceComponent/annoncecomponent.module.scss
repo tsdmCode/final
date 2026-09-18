@@ -1,0 +1,76 @@
+@use '../../styles/variables' as *;
+
+.annoncecomponentStyle {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 6rem;
+  margin: 2rem;
+  padding: 2rem;
+  @include borderValues(1px, #00000033);
+  border-radius: 14px;
+  background-color: $fullWhite;
+
+  .Info {
+    p:first-of-type {
+      font-size: $smallText;
+      font-weight: $thin;
+    }
+
+  }
+  h3 {
+    font-size: $headerText;
+    font-weight: 500;
+
+  }
+  p {
+    margin-top: 0;
+
+  }
+
+  .contact {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+  }
+
+  .controls {
+    display: flex;
+    gap: $mediumPadding;
+    width: 50%;
+
+  }
+
+  button {
+    background-color: $altwhite;
+    border-radius: 14px;
+    padding: 0.5rem 3rem;
+    @include borderValues(1px, #00000033);
+    flex: 1;
+    
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin: 1rem;
+    padding: 1rem;
+  }
+
+  .favButton {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-align: center;
+    img {
+      width: 30%;
+    }
+
+  }
+
+  .dangerButton {
+    background-color: $accent;
+    color: $white;
+    
+  }
+}
