@@ -60,7 +60,7 @@ export default function SearchComponent() {
   return (
     <section className={style.searchcomponentStyle}>
       <h2>Søg frivilligt arbejde</h2>
-      <form onSubmit={handleSubmit}>
+      <form noValidate onSubmit={handleSubmit}>
         <input type="text" value={query} onChange={(e) => setQuery(e.target.value)} />
         <input type="submit" value={'Søg'} />
       </form>

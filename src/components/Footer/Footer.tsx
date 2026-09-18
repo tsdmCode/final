@@ -65,7 +65,7 @@ export default function Footer() {
       <section>
         <h2>Vil du have jobs direkte i din indbakke?</h2>
         <p>Tilmeld dig vores elektroniske nyhedsbrev</p>
-        <form onSubmit={handleSubmit}>
+        <form noValidate onSubmit={handleSubmit}>
           <input type="email" onChange={(e) => setFormEmail(e.target.value)} value={formEmail} />
           <input type="submit" value={'Tilmeld'} />
         </form>
