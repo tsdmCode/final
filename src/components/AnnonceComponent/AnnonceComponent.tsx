@@ -60,11 +60,13 @@ export default function AnnonceComponent({
           Authorization: `Bearer ${userData.accessToken}`,
         },
         body,
-        // body: method === 'POST' ? JSON.stringify({ jobListingId: listing.id }) : undefined,
+
       });
+
       if (!res.ok) {
         throw new Error(`Kunne ikke ${isFav ? 'fjerne' : 'tilføje'} til favoritter`);
       }
+      
       setLocalFav(!localFav);
       alert(localFav ? 'Fjernet fra favoritter' : 'Gemt som favorit');
     } catch (error) {

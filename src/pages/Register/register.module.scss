@@ -3,13 +3,10 @@
 .registerStyle {
   article {
     padding: 5rem 25%;
-    // width: 100vw;
-    // background-size: 100vw;
     text-align: center;
     background-color: $altwhite;
     margin-top: 0;
-    // margin-left: -50vw;
-    // margin-right: -50vw;
+
 
     h2 {
       font-size: $biggestText;
@@ -19,8 +16,6 @@
   }
 
   width: 100%;
-  // margin: 0rem 25% 2rem 25%;
-  // padding: 0rem 25% 2rem 25%;
   display: flex;
   margin-bottom: 3rem;
   flex-direction: column;
@@ -48,6 +43,7 @@
     background-color: $altwhite;
     font-family: inherit;
   }
+
   form {
     font-family: $altfontstack;
     width: 30%;
@@ -67,7 +63,6 @@
   a {
     width: 30%;
     margin: 0 auto;
-    // padding-left: 1rem;
     margin-top: 0.5rem;
     font-size: $dateText;
     color: $main;

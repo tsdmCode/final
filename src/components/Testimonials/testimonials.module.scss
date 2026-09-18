@@ -29,6 +29,7 @@
     justify-content: center;
     gap: $mediumPadding;
     margin: 1rem 25%;
+
     .dot {
       background-color: $white;
       border-radius: 300px;
@@ -41,4 +42,5 @@
       }
     }
   }
+  
 }

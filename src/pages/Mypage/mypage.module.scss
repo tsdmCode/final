@@ -8,22 +8,6 @@
   align-items: center;
   align-content: center;
 
-  // article {
-  //   padding: 5rem 25%;
-  //   // background-size: 100vw;
-  //   text-align: center;
-  //   background-color: $altwhite;
-  //   margin-top: 0;
-  //   // margin-left: calc(-10vw + 50%);
-  //   // margin-right: calc(-10vw + 50%);
-
-  //   h2 {
-  //     font-size: $biggestText;
-  //     font-weight: $regularWeight;
-  //     font-family: $altfontstack;
-  //   }
-  // }
-
   .controlButtons {
     margin-top: 3rem;
     width: 80%;
@@ -51,7 +35,7 @@
 
     .active {
       background-color: $accent;
-      color: white;
+      color: $white;
       text-decoration: underline;
     }
 

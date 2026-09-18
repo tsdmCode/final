@@ -73,7 +73,6 @@ export default function Register() {
         }
 
         navigate('/register?mode=login');
-        // return res.text();
       })
       .catch((error) => {
         console.error('Error creating user: ', error);
@@ -112,13 +111,6 @@ export default function Register() {
       <title>Register/Login</title>
       <HiddenHeader topic="Searchresults" />
       <UserBanner userName="" mode="register" />
-      {/* <article>
-        <h2>Log ind eller opret dig som bruger</h2>
-        <p>
-          Når du opretter en profil på Gratissimo får du adgang til at oprette, slette og redigere i job annoncer. Som
-          privatperson får du mulighed for at gemme de jobs du kunne være interesseret i.{' '}
-        </p>
-      </article> */}
       <h2>{mode === 'register' ? 'Opret ny Profil' : 'Log ind'}</h2>
       <>
         {mode === 'register' ? (

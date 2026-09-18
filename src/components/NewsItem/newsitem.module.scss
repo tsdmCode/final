@@ -2,7 +2,6 @@
 
 .newsitemStyle {
   width: 100%;
-  // max-width: 356px;
   @include borderValues(1px, #00000033);
   background-color: $fullWhite;
   border-radius: 14px;
@@ -23,8 +22,10 @@
     height: 70%;
     object-fit: cover;
   }
+
   .date {
     color: $accent;
     font-size: $dateText;
   }
+  
 }

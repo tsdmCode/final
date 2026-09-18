@@ -27,6 +27,7 @@ export default function CreatePosting() {
     if (!userData) {
       alert('Log lige ind først');
     }
+
     const noSpecials = /^[^A-Zz-z0-9\s]$/;
     const descriptionRegex = /^[^A-Zz-z0-9\s.,]$/;
     const zipCodeRegex = /^[0-9]{4}$/;
@@ -46,6 +47,7 @@ export default function CreatePosting() {
       setMessageError('Venligst vælg en kategori');
       return;
     }
+
     if (!city.trim()) {
       setMessageError('Husk at skrive en by ind');
       return;
@@ -53,6 +55,7 @@ export default function CreatePosting() {
       setMessageError('Ingen specialtegn i by tak');
       return;
     }
+
     if (!address.trim()) {
       setMessageError('Indtast en addresse');
       return;
@@ -107,9 +110,11 @@ export default function CreatePosting() {
       });
 
       alert('Annonce oprettet');
+
       setTimeout(() => {
         navigate('/minside');
       }, 3000);
+      
     } catch (error) {
       console.error('Kunne ikke opdatere favoritter:', error);
       alert('Der skete en fejl');

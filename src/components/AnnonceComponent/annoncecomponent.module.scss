@@ -15,26 +15,30 @@
       font-size: $smallText;
       font-weight: $thin;
     }
+
   }
   h3 {
     font-size: $headerText;
     font-weight: 500;
+
   }
   p {
     margin-top: 0;
+
   }
 
   .contact {
-    // position: relative;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
   }
 
   .controls {
     display: flex;
     gap: $mediumPadding;
     width: 50%;
+
   }
 
   button {
@@ -43,6 +47,7 @@
     padding: 0.5rem 3rem;
     @include borderValues(1px, #00000033);
     flex: 1;
+    
   }
 
   @media (max-width: 768px) {
@@ -60,10 +65,12 @@
     img {
       width: 30%;
     }
+
   }
 
   .dangerButton {
     background-color: $accent;
     color: $white;
+    
   }
 }

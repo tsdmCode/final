@@ -71,6 +71,7 @@
         width: 100%;
       }
     }
+
   }
 
   .filters {
@@ -88,6 +89,7 @@
       flex-direction: column;
       gap: 0.5rem;
     }
+    
   }
 
   select,
@@ -113,10 +115,12 @@
     @media (max-width: 480px) {
       width: 100%;
     }
+
   }
 
   select:open {
     background-image: url('/icons8-back-30.png');
+
   }
 
   button {
@@ -130,6 +134,7 @@
       color: $fullWhite;
       padding: 1rem;
       border-radius: 14px;
+      
     }
   }
 }

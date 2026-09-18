@@ -12,7 +12,7 @@
   border-radius: 24px;
   padding: 0.75rem;
   margin-inline: auto;
-  
+
   button {
     background-color: $white;
     @include borderValues(1px, #00000066);
@@ -41,4 +41,5 @@
     overflow: hidden;
     padding: 0.25;
   }
+  
 }

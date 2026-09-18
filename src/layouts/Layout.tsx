@@ -9,7 +9,6 @@ import { AuthContext } from '../context/context/AuthContext';
 export function Layout() {
   const {userData} = useContext(AuthContext);
 
-
   return (
     <div className={style.layoutContainer}>
       <Navbar />

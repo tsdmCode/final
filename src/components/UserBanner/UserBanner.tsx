@@ -7,6 +7,7 @@ export default function UserBanner({
   mode: 'register' | 'minside' | 'annonce';
   userName: string;
 }) {
+  
   if (mode === 'annonce') {
     return (
       <article className={style.userbannerStyle}>

@@ -7,8 +7,6 @@ export default function Testimonials() {
   const { data, isLoading, error } = useFetch<Testimony[]>(import.meta.env.VITE_URL + '/api/testimony');
   const [index, setIndex] = useState(0);
 
- 
-
   useEffect(() => {
     if (!data || data.length === 0) return;
 

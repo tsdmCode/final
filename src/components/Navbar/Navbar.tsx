@@ -47,7 +47,6 @@ export default function Navbar() {
               <li>
                 <NavLink to={'/register?mode=register'}>Opret Bruger</NavLink>
               </li>
-              {/* <hr /> */}
               <li>
                 <NavLink to={'/register?mode=login'}>Login</NavLink>
               </li>
