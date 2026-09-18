@@ -3,6 +3,7 @@ import style from './news.module.scss';
 import type { Article } from '../../types/types';
 import { useParams } from 'react-router';
 import { useFetch } from '../../hooks/useFetch';
+import HiddenHeader from '../../components/HiddenHeader/HiddenHeader';
 // Nyhedssiden viser enten den nyhed brugeren har valgt på forsiden, eller en tilfældig
 // udvalgt nyhed hvis man klikker på nyheder i navigationsmenuen.
 // Under den valgte nyhed, vises alle nyheder i et grid, som anvist i designet. Klikkes der
@@ -14,13 +15,14 @@ export default function News() {
   console.log(foundArticle);
 
   if (!foundArticle) return null;
-  
+
   return (
     <div className={style.newsStyle}>
+      <title>Nyheder</title>
+      <HiddenHeader topic="Nyheder" />
       <figure className={style.bigArticle}>
         <img src={import.meta.env.VITE_URL + foundArticle?.imageUrl} alt={foundArticle?.title} />
         <figcaption>
-          
           <p className={style.date}>
             d.{' '}
             {Intl.DateTimeFormat('da-DK', { dateStyle: 'short' })

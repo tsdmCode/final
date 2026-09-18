@@ -1,6 +1,25 @@
 import style from './userbanner.module.scss';
 
-export default function UserBanner({ mode, userName="" }: { mode: 'register' | 'minside'; userName: string }) {
+export default function UserBanner({
+  mode,
+  userName = '',
+}: {
+  mode: 'register' | 'minside' | 'annonce';
+  userName: string;
+}) {
+  if (mode === 'annonce') {
+    return (
+      <article className={style.userbannerStyle}>
+        <h2>Opret en annonce og find frivillige til din forening</h2>
+        <p>
+          Gratissimo er gratis for alle. Frivillige, organisationer og foreninger. Du skaber det frivillige liv og vi
+          formidler kontakten. Når du har fundet en frivillig til din forening, kan du blot fjerne annoncen igen ved at
+          gå til din side.
+        </p>
+        <a href="/minside">Gå til min side</a>
+      </article>
+    );
+  }
 
   return (
     <article className={style.userbannerStyle}>

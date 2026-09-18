@@ -42,6 +42,7 @@ export default function Frontpage() {
   }, [data]);
   return (
     <div className={style.frontpageStyle}>
+      <title>Gratissimo</title>
       <HiddenHeader topic="Gratissimo" />
       <SearchComponent />
       <Categories />

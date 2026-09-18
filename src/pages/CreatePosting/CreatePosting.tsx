@@ -4,6 +4,7 @@ import { AuthContext } from '../../context/context/AuthContext';
 import { useFetch } from '../../hooks/useFetch';
 import type { Category, Region } from '../../types/types';
 import { useNavigate } from 'react-router';
+import UserBanner from '../../components/UserBanner/UserBanner';
 // Opret annonce siden består af en header der viser noget tekst og en formular, som
 // anvist i designet. For at oprette en annonce skal man være logget ind. Du skal derfor
 // gøre brugeren opmærksom på at de skal logge ind før de kan oprette en annonce.
@@ -132,6 +133,7 @@ export default function CreatePosting() {
 
   return (
     <div className={style.createpostingStyle}>
+      <UserBanner mode="annonce" />
       <form
         onSubmit={(e) => {
           e.preventDefault();

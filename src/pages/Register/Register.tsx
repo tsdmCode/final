@@ -3,6 +3,7 @@ import { useState, useEffect, useContext } from 'react';
 import { useNavigate, useSearchParams } from 'react-router';
 import { AuthContext } from '../../context/context/AuthContext';
 import UserBanner from '../../components/UserBanner/UserBanner';
+import HiddenHeader from '../../components/HiddenHeader/HiddenHeader';
 
 export default function Register() {
   const [searchParams] = useSearchParams();
@@ -108,6 +109,8 @@ export default function Register() {
 
   return (
     <div className={style.registerStyle}>
+      <title>Register/Login</title>
+      <HiddenHeader topic="Searchresults" />
       <UserBanner userName="" mode="register" />
       {/* <article>
         <h2>Log ind eller opret dig som bruger</h2>

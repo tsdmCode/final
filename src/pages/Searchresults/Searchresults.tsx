@@ -67,7 +67,6 @@ export default function Searchresults() {
   }, [userData]);
 
   useEffect(() => {
-
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setCurrentPage(1);
   }, [searchParams]);
@@ -122,8 +121,9 @@ export default function Searchresults() {
 
   return (
     <div className={style.searchresultsStyle}>
+      <title>Searchresults</title>
+      <HiddenHeader topic="Searchresults" />
       <SearchComponent />
-      <HiddenHeader topic="Hej" />
       <article>
         {paginatedListings?.map((listing) => (
           <AnnonceComponent favorites={favorites} key={listing.id} listing={listing} />
